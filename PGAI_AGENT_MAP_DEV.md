@@ -1,7 +1,9 @@
 # PGAI Agent Predicted Black-Box Map
 
-**Baseline status:** Pre-call hypothesis  
-**Created:** 2026-08-17  
+**Baseline status:** Pre-call hypothesis
+
+**Created:** 2026-08-17
+
 **Evidence status:** Not yet verified by an assessment call
 
 This document preserves the expected behavior of the PGAI voice agent before telephone testing. It is based only on the challenge instructions, the fictional-patient Athena demo flow, and project-relevant statements on Pretty Good AI's public website. Company descriptions are treated as predictions, not observed system behavior. After the first controlled call, record the observed map separately instead of rewriting this baseline.

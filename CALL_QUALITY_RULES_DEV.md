@@ -1,6 +1,7 @@
 # Call Outcome and Safety Rules
 
-**Status:** Pre-call development rules  
+**Status:** Pre-call development rules
+
 **Created:** 2026-08-17
 
 These rules define how a controlled assessment call will be steered, stopped, and reviewed. They do not describe observed PGAI behavior. Apply them consistently unless recorded evidence justifies a later revision.
@@ -107,4 +108,3 @@ Active steering is judged by decisions and adaptation, not by exact wording. The
 - Recognizes when the intended outcome, acceptable alternative, or safe-stop condition has been reached.
 
 The bot fails the steering standard when it reads a rigid sequence regardless of PGAI's responses, ignores answered questions, changes facts without a scenario reason, or continues after a valid outcome solely to generate more turns.
-

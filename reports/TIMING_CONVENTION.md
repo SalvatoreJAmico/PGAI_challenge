@@ -61,4 +61,3 @@ For an ordinary response:
 - Number of overlaps
 - Number of intentional interruptions
 - Number of timeouts
-
