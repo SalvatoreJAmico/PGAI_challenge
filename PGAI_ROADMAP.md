@@ -85,9 +85,10 @@ Use these alerts during the build, **before** the corresponding action:
 
 ### Predicted map before the first call
 
-- [ ] Inspect Athena's patient experience without calling its confirmation-screen number.
-- [ ] Draft the expected PGAI agent flow: greeting → identify intent → collect information → check policy/availability → propose action → confirm → close.
-- [ ] Define what to capture for every PGAI turn:
+- [X] Inspect Athena's patient experience without calling its confirmation-screen number.
+- **Website research note:** Project-relevant company materials describe appointment scheduling and changes, medication refills, insurance verification, referral intake, office and after-hours routing, escalation, multilingual handling, and athenaOne write-back. The agent is expected to follow practice-specific workflows and avoid providing medical advice. Treat these as predicted capabilities—not verified behavior—until controlled assessment calls provide recordings and transcripts. Evaluate latency, coherence, memory, confirmation accuracy, corrections, interruptions, unclear intent, escalation, loops, silence, and hang-up behavior. Do not perform security testing or use real patient information; company performance figures remain unverified marketing claims.
+- [X] Draft and preserve the expected PGAI agent flow and predicted branches in `PGAI_AGENT_MAP_DEV.md`: greeting → identify intent → collect information → check policy/availability → propose action → confirm → close.
+- [X] Define what to capture for every PGAI turn in `reports/turn-observation-template.md`:
   - Prompt or event that triggered it
   - Question asked and order
   - Patient information requested
@@ -98,8 +99,8 @@ Use these alerts during the build, **before** the corresponding action:
   - Confirmation accuracy
   - Misunderstanding recovery
   - Transfer, refusal, loop, retry, or hang-up behavior
-- [ ] Define timestamps and latency measurements to capture.
-- [ ] Define success, failure, timeout, repeated-loop, and safe-stop rules.
+- [X] Define timestamps and latency measurements to capture in `reports/TIMING_CONVENTION.md`.
+- [X] Define success, failure, timeout, repeated-loop, safe-stop, coherent-call, and active-steering rules in `CALL_QUALITY_RULES_DEV.md`; apply them with `reports/call-quality-review-template.md`.
 
 ### Observed map after controlled calls
 
