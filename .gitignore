@@ -1,0 +1,44 @@
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Credentials and private keys
+*.pem
+*.key
+credentials*.json
+secrets*.json
+
+# Private project data
+.local/
+receipts/
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Temporary audio and incomplete artifacts
+tmp/
+temp/
+*.wav
+*.pcm
+*.raw
+
+# Logs and local databases
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

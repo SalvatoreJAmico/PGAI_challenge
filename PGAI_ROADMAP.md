@@ -27,7 +27,7 @@
 - [ ] Do not make any call until the approved outbound number, two-sided recording, transcript capture, and metadata capture are configured.
 - [ ] Do not make bulk calls until one complete early call has been heard, inspected, and approved.
 - [ ] Do not commit API keys, phone credentials, tokens, secrets, `.env`, or sensitive recordings.
-- [ ] Commit a safe `.env.example` containing every required variable name but no values or secrets.
+- [X] Commit a safe `.env.example` containing the agreed provider and safety variable names with no values or secrets; extend it only when the configuration contract changes.
 - [ ] Preserve receipts and provider usage records for reimbursement.
 - [ ] Track anticipated spending and warn Salvatore before material costs; the $20 reimbursement amount is not an architecture constraint.
 - [ ] Do not contact PGAI or its employees through email, LinkedIn, or other direct channels.
@@ -55,13 +55,15 @@ Use these alerts during the build, **before** the corresponding action:
   - `reports/`
   - `scripts/`
   - `README.md`
-  - `ARCHITECTURE.md`
-  - `BUG_REPORT.md`
+  - `ARCHITECTURE_DEV.md` for working decisions and notes
+  - `submission/ARCHITECTURE.md` for the final reviewer-facing explanation
+  - `submission/BUG_REPORT.md`
   - `.env.example`
   - dependency file (`requirements.txt` or `pyproject.toml`)
-- [ ] Add `.gitignore` protections for `.env`, credentials, temporary audio, caches, and local provider files.
-- [ ] Establish IDs and filenames that link scenario, call, recording, transcript, metadata, review, and bug evidence.
-- [ ] Add a cost ledger and receipt location outside committed secrets.
+- [X] Add `.gitignore` protections for `.env`, credentials, temporary audio, caches, and local provider files; extend as new tools introduce local artifacts.
+- [X] Establish IDs and filenames that link scenario, call, recording, transcript, metadata, review, and bug evidence (`S##-A##-YYYYMMDDThhmmssZ`).
+- [X] Define the artifact publication policy: generated evidence starts under ignored `.local/` staging and only reviewed, sanitized, submission-quality artifacts are promoted into canonical GitHub folders.
+- [X] Add a committed cost ledger at `reports/cost-ledger.csv` and a private, ignored receipt location at `.local/receipts/`.
 
 ## Phase 1 — Verify current official services before coding
 
@@ -114,13 +116,14 @@ Use these alerts during the build, **before** the corresponding action:
 - [ ] Record the exact outbound E.164 number in a private submission worksheet.
 - [ ] Confirm the application rejects every dial target except `+18054398008`.
 - [ ] Configure secrets locally through environment variables.
-- [ ] Create `.env.example` containing every required variable name and safe comments.
+- [X] Create `.env.example` containing the agreed LiveKit, OpenAI, Twilio, and project-safety variable names with safe comments and empty values.
 - [ ] Configure two-sided recording before enabling outbound calls.
 - [ ] Configure transcript capture for both speakers before enabling outbound calls.
 - [ ] Configure call metadata, scenario ID, intended outcome, timing, and review fields.
 - [ ] Confirm generated audio files can be stored as MP3 or OGG.
 - [ ] Confirm provider receipt/usage records can be preserved.
-- [ ] Run a secret scan before the first commit and again before publication.
+- [X] Run a secret scan before the repository-safety commit (2026-08-17: `detect-secrets` findings 0; targeted token-pattern findings 0; non-empty `.env.example` values 0).
+- [ ] Run the secret scan again immediately before final publication/submission.
 
 ## Phase 4 — Build the smallest end-to-end bot
 

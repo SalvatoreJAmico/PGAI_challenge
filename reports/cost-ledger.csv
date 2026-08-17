@@ -1,0 +1,1 @@
+call_id,scenario_id,attempt,start_utc,duration_seconds,twilio_call_usd,twilio_recording_usd,livekit_usd,openai_realtime_usd,transcription_usd,other_usd,total_usd,provider_usage_reference,receipt_reference,notes
