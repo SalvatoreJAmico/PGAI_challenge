@@ -1,6 +1,6 @@
 # Pretty Good AI Engineering Challenge — Live Roadmap
 
-**Status:** Architecture research and selection complete; implementation not started  
+**Status:** Architecture selection and Phase 2 pre-call planning complete; implementation not started
 **Working pace:** One or two steps at a time; Salvatore writes the Python in small pieces with AI code completion and review  
 **Expected duration:** Four working days, with a fifth contingency day if integration or call quality requires it  
 **Assessment destination:** `+18054398008` only  
@@ -17,8 +17,8 @@
 
 ## Non-negotiable safety gates
 
-- [ ] Create and use only fictional test-patient data.
-- [ ] Create a test account at <https://pgai.us/athena> to understand the patient experience.
+- [X] Create and use only fictional test-patient data.
+- [X] Create a test account at <https://pgai.us/athena> to understand the patient experience.
 - [ ] Never call the number displayed on Athena's confirmation screen.
 - [ ] Every assessment call goes only to `+18054398008`.
 - [ ] Select exactly one outbound number and record it accurately in E.164 format.
