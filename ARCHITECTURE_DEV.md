@@ -207,6 +207,15 @@ Use this section as a chronological record. Notes should capture what was observ
 - **Architecture impact:** None.
 - **Loom talking point:** Demonstrate that secret handling was verified rather than assumed.
 
+### 2026-08-18 - Destination configuration fails closed
+
+- **Context:** The assessment authorizes calls only to `+18054398008`; a missing or altered setting must never broaden that scope.
+- **Decision:** Treat `+18054398008` as the immutable approved destination. Before any provider request, require the configured value to exist, parse as E.164, normalize to the exact approved value, and reject missing, malformed, overridden, or different values without a fallback.
+- **Implementation status:** Contract documented during provider setup. Configuration loading, enforcement code, and fixture tests are deliberately deferred to Phase 4.
+- **Reasoning and tradeoff:** A configuration error stops execution instead of risking an unauthorized call. This is stricter than accepting arbitrary valid phone numbers and matches the challenge safety boundary.
+- **Architecture impact:** Shared by the primary and backup call paths.
+- **Loom talking point:** Show that both call paths use one immutable destination gate before contacting LiveKit or Twilio.
+
 ### Note template
 
 #### YYYY-MM-DD — Short decision or observation
