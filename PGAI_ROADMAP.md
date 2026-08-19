@@ -19,18 +19,18 @@
 
 - [X] Create and use only fictional test-patient data.
 - [X] Create a test account at <https://pgai.us/athena> to understand the patient experience.
-- [ ] Never call the number displayed on Athena's confirmation screen.
-- [ ] Every assessment call goes only to `+18054398008`.
-- [ ] Select exactly one outbound number and record it accurately in E.164 format.
-- [ ] Use that same outbound number for every test call, including mapping and retest calls.
-- [ ] Do not make a manual call from a personal phone.
+- [X] Never call the number displayed on Athena's confirmation screen.
+- [X] Every assessment call goes only to `+18054398008`.
+- [X] Select exactly one outbound number and record it accurately in E.164 format.
+- [X] Use that same outbound number for every test call, including mapping and retest calls.
+- [X] Do not make a manual call from a personal phone.
 - [ ] Do not make any call until the approved outbound number, two-sided recording, transcript capture, and metadata capture are configured.
 - [ ] Do not make bulk calls until one complete early call has been heard, inspected, and approved.
-- [ ] Do not commit API keys, phone credentials, tokens, secrets, `.env`, or sensitive recordings.
+- [X] Do not commit API keys, phone credentials, tokens, secrets, `.env`, or sensitive recordings.
 - [X] Commit a safe `.env.example` containing the agreed provider and safety variable names with no values or secrets; extend it only when the configuration contract changes.
-- [ ] Preserve receipts and provider usage records for reimbursement.
-- [ ] Track anticipated spending and warn Salvatore before material costs; the $20 reimbursement amount is not an architecture constraint.
-- [ ] Do not contact PGAI or its employees through email, LinkedIn, or other direct channels.
+- [X] Preserve receipts and provider usage records for reimbursement.
+- [X] Track anticipated spending and warn Salvatore before material costs; the $20 reimbursement amount is not an architecture constraint.
+- [X] Do not contact PGAI or its employees through email, LinkedIn, or other direct channels.
 - [ ] Do not publish, purchase, submit the form, or take another irreversible external action without showing Salvatore the exact final state first.
 
 ## Required video alerts
@@ -113,16 +113,16 @@ Use these alerts during the build, **before** the corresponding action:
 
 ## Phase 3 — Safe configuration
 
-- [ ] Select and configure one outbound telephony number.
-- [ ] Record the exact outbound E.164 number in a private submission worksheet.
+- [X] Select and configure one outbound telephony number.
+- [X] Record the exact outbound E.164 number in a private submission worksheet.
 - [ ] Confirm the application rejects every dial target except `+18054398008`.
-- [ ] Configure secrets locally through environment variables.
+- [X] Configure secrets locally through environment variables.
 - [X] Create `.env.example` containing the agreed LiveKit, OpenAI, Twilio, and project-safety variable names with safe comments and empty values.
-- [ ] Configure two-sided recording before enabling outbound calls.
-- [ ] Configure transcript capture for both speakers before enabling outbound calls.
-- [ ] Configure call metadata, scenario ID, intended outcome, timing, and review fields.
-- [ ] Confirm generated audio files can be stored as MP3 or OGG.
-- [ ] Confirm provider receipt/usage records can be preserved.
+- [X] Configure two-sided recording before enabling outbound calls.
+- [X] Configure transcript capture for both speakers before enabling outbound calls.
+- [X] Configure call metadata, scenario ID, intended outcome, timing, and review fields.
+- [X] Confirm generated audio files can be stored as MP3 or OGG.
+- [X] Confirm provider receipt/usage records can be preserved.
 - [X] Run a secret scan before the repository-safety commit (2026-08-17: `detect-secrets` findings 0; targeted token-pattern findings 0; non-empty `.env.example` values 0).
 - [ ] Run the secret scan again immediately before final publication/submission.
 
@@ -351,6 +351,30 @@ Every bug entry must include:
 
 ## Working-day schedule
 
+### Work log
+
+#### 2026-08-17 — Work session 1
+
+- **Active time:** approximately 2.25 hours.
+- **Elapsed session window:** approximately 2 hours 26 minutes, including short pauses.
+- **Normal workday length:** approximately 7 hours.
+- **Completed:** Phase 0 workspace and repository safety, Phase 1 architecture research and selection, and Phase 2 pre-call black-box planning.
+- **GitHub:** Issues #1 and #2 closed; Issue #3 created and left open for the next session.
+- **Safety state:** No assessment calls made and no voice-bot implementation code written.
+- **Next starting point:** Continue with Issue #3—provider configuration and the pre-call safety gate.
+- **Schedule note:** Approximately 4.75 hours of the original Day 1 capacity remain. The next session continues the unfinished Day 1 provider setup and implementation work rather than treating those items as completed.
+
+#### 2026-08-18 - Work session 2
+
+- **Active time:** approximately 1.3 hours of guided provider setup, private configuration, and validation.
+- **Elapsed session window:** approximately 1 hour 20 minutes, from about 1:27 PM to 2:47 PM CDT, including dashboard navigation and short pauses.
+- **Completed:** Created and funded a separate OpenAI project, confirmed `gpt-realtime-2.1` access, created a LiveKit Cloud project with observability enabled, selected one Twilio voice-capable US number, configured dual-answer recording, created the Twilio Elastic SIP trunk, and created the matching LiveKit outbound SIP trunk.
+- **Private configuration:** Populated the ignored `.env.local`, recorded the approved caller and destination in the ignored submission worksheet, and retained all credentials and provider identifiers outside Git.
+- **Validation:** OpenAI, Twilio, and LiveKit authentication passed through non-call checks; the configured LiveKit outbound trunk was found; `git diff --check` passed; `detect-secrets` reported 0 findings; `.env.example` remained empty.
+- **Safety state:** No telephone call, LiveKit room, SIP participant, or OpenAI Realtime session was created. No voice-bot implementation code was written.
+- **Deferred by decision:** Destination enforcement code and configuration-fixture tests remain Phase 4 work. The documented fail-closed contract requires no provider request for a missing, malformed, overridden, or non-approved destination.
+- **Next starting point:** Begin Phase 4 configuration loading and destination-allowlist code in small reviewable pieces, including the deferred fixture validation before any call path is enabled.
+
 ### Day 1 — Architecture and first complete call
 
 - [ ] Phases 0–3: workspace, official documentation, architecture, map, and safe configuration.
@@ -394,7 +418,7 @@ Every bug entry must include:
 - [x] AI-assisted coding approach established: small Python pieces written by Salvatore with AI completion and review.
 - [x] Project execution started: repository and architecture phases are underway; implementation has not started.
 - [x] Architecture selected from current official documentation.
-- [ ] Single outbound number configured.
+- [x] Single outbound number configured.
 - [ ] First complete call approved.
 - [ ] Genuine debugging video recorded.
 - [ ] Minimum 10 strong calls complete.
