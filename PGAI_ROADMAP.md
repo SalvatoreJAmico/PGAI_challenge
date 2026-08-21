@@ -388,12 +388,11 @@ Every bug entry must include:
 - **Credential hold:** Credentials visible during the guided setup must be rotated before any provider-connected or authenticated testing. Offline implementation may continue before rotation, but no exposed credential should be used again.
 - **Next starting point:** Rotate the exposed OpenAI, LiveKit, and Twilio credentials before connected testing. Continue `Settings` with the OpenAI, Twilio, destination, and duration fields; then add fail-closed validation, the settings loader, and focused offline tests.
 
-#### 2026-08-21 - Work session 4
+#### 2026-08-21 - Work sessions 4–6
 
-- **Active time:** approximately 1.0 hour of guided implementation, review, safety verification, licensing, and publication.
-- **Elapsed session window:** approximately 59 minutes, from about 4:40 PM to 5:39 PM CDT, based on observable workspace activity.
-- **Cumulative recorded active time:** approximately 5.9 hours across four work sessions.
-- **Cumulative recorded elapsed time:** approximately 6 hours 6 minutes across the documented session windows.
+- **Session count:** Three separate intermittent sessions, divided by two explicit user-requested pauses and later resumes in the development chat.
+- **Time accounting:** Exact message timestamps and pause durations are not exposed in the available chat context, so no active-time or elapsed-time estimate is recorded for these three sessions.
+- **Previously measured total:** Sessions 1–3 contain approximately 4.9 active hours and 5 hours 7 minutes of elapsed session windows. Add the three August 21 session durations only when their actual start, pause, resume, and stop times are available.
 - **Configuration and safety:** Completed typed configuration loading, nonempty credential validation, exact 180-second enforcement, E.164 destination normalization, and the immutable approved-destination gate.
 - **Offline tests:** Added focused configuration, destination, scenario, call-ID, artifact-path, and dry-run tests. The complete suite passed with 49 tests and no network or call creation.
 - **Scenario foundation:** Added a strict fictional-patient and scenario schema plus one minimal appointment-scheduling fixture for dry-run validation.
