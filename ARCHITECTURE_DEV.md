@@ -95,7 +95,7 @@ Retries increment the attempt number and receive their own start timestamp. Iden
 The root artifact folders are canonical. Reusable scenario definitions use their scenario ID; every artifact produced by an individual call repeats the exact call ID:
 
 ```text
-scenarios/S01-appointment-scheduling.yaml
+scenarios/S01-appointment-scheduling.json
 recordings/S01-A01-20260817T143000Z.mp3
 transcripts/S01-A01-20260817T143000Z.md
 reports/metadata/S01-A01-20260817T143000Z.json
@@ -149,7 +149,7 @@ Use this section as a chronological record. Notes should capture what was observ
 - **Primary selected:** LiveKit Agents + Twilio SIP + OpenAI `gpt-realtime-2.1`.
 - **Backup selected:** Twilio bidirectional Media Streams + OpenAI `gpt-realtime-2.1`.
 - **Reasoning:** The bot must clear the coherent-conversation gate, but the project should concentrate engineering time on testing quality, useful bug discovery, evidence, and genuine debugging. LiveKit provides established voice infrastructure while leaving our scenario and evaluation logic in Python.
-- **Current state:** Architecture selected; implementation has not started.
+- **Current state:** Architecture selected and the non-call safety foundation is implemented and merged. Provider composition, conversation runtime, and all real call behavior remain unimplemented.
 
 ### 2026-08-17 — Shared call-ID convention selected
 
@@ -211,7 +211,7 @@ Use this section as a chronological record. Notes should capture what was observ
 
 - **Context:** The assessment authorizes calls only to `+18054398008`; a missing or altered setting must never broaden that scope.
 - **Decision:** Treat `+18054398008` as the immutable approved destination. Before any provider request, require the configured value to exist, parse as E.164, normalize to the exact approved value, and reject missing, malformed, overridden, or different values without a fallback.
-- **Implementation status:** Contract documented during provider setup. Configuration loading, enforcement code, and fixture tests are deliberately deferred to Phase 4.
+- **Implementation result (2026-08-21):** Completed in Phase 4. Configuration loading normalizes the destination with `phonenumbers`, rejects missing, malformed, overridden, and different values, and has focused offline tests covering the fail-closed contract.
 - **Reasoning and tradeoff:** A configuration error stops execution instead of risking an unauthorized call. This is stricter than accepting arbitrary valid phone numbers and matches the challenge safety boundary.
 - **Architecture impact:** Shared by the primary and backup call paths.
 - **Loom talking point:** Show that both call paths use one immutable destination gate before contacting LiveKit or Twilio.

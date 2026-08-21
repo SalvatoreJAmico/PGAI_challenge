@@ -1,10 +1,10 @@
 # Pretty Good AI Engineering Challenge — Live Roadmap
 
-**Status:** Architecture selection and Phase 2 pre-call planning complete; implementation not started
+**Status:** Non-call safety foundation merged; Issue #7 provider-ready conversation runtime is next; no provider session or telephone call has been created
 **Working pace:** One or two steps at a time; Salvatore writes the Python in small pieces with AI code completion and review  
 **Expected duration:** Four working days, with a fifth contingency day if integration or call quality requires it  
 **Assessment destination:** `+18054398008` only  
-**Outbound number:** Not yet selected — after selection, use exactly that one E.164 number for every assessment call
+**Outbound number:** One Twilio number is selected and recorded privately in E.164 format; use exactly that number for every assessment call
 
 ## Current architecture direction
 
@@ -266,9 +266,9 @@ Every bug entry must include:
 
 - [ ] Working, clean, understandable Python code.
 - [ ] Clear repository structure.
-- [ ] `README.md` with prerequisites, setup, configuration, safety rules, and run instructions.
+- [X] `README.md` with prerequisites, setup, configuration, safety rules, and current non-call run instructions.
 - [ ] README ideally supports one command after initial configuration.
-- [ ] README briefly discloses AI-assisted development.
+- [X] README briefly discloses AI-assisted development.
 - [ ] `submission/ARCHITECTURE.md` contains at least one or two strong paragraphs covering:
   - How the system works
   - Data and audio flow
@@ -278,8 +278,8 @@ Every bug entry must include:
   - Relevant tradeoffs
   - Why the final design fits the challenge
   - Whether a Realtime API was used and why
-- [ ] Safe `.env.example` with all required variables.
-- [ ] Dependency file.
+- [X] Safe `.env.example` with all required variables.
+- [X] Dependency file.
 - [ ] At least 10 MP3 or OGG recordings.
 - [ ] At least 10 corresponding two-sided transcripts.
 - [ ] Scenario definitions and call-result metadata.
@@ -391,8 +391,10 @@ Every bug entry must include:
 #### 2026-08-21 - Work sessions 4–6
 
 - **Session count:** Three separate intermittent sessions, divided by two explicit user-requested pauses and later resumes in the development chat.
-- **Time accounting:** Exact message timestamps and pause durations are not exposed in the available chat context, so no active-time or elapsed-time estimate is recorded for these three sessions.
-- **Previously measured total:** Sessions 1–3 contain approximately 4.9 active hours and 5 hours 7 minutes of elapsed session windows. Add the three August 21 session durations only when their actual start, pause, resume, and stop times are available.
+- **Best-effort session estimates:** Session 4 approximately 30 minutes, Session 5 approximately 35 minutes, and Session 6 approximately 1 hour 20 minutes of active work. These estimates carry roughly ±30 minutes of total uncertainty because message timestamps are unavailable.
+- **Estimated August 21 active time:** approximately 2 hours 25 minutes across the three intermittent sessions; pause time and personal-chore time are excluded.
+- **Estimated cumulative active time:** approximately 7 hours 20 minutes across six sessions, combining the 4.9 recorded active hours from Sessions 1–3 with the August 21 estimate.
+- **Estimated cumulative working-session time:** approximately 7 hours 32 minutes, excluding the unknown gaps between August 21 sessions.
 - **Configuration and safety:** Completed typed configuration loading, nonempty credential validation, exact 180-second enforcement, E.164 destination normalization, and the immutable approved-destination gate.
 - **Offline tests:** Added focused configuration, destination, scenario, call-ID, artifact-path, and dry-run tests. The complete suite passed with 49 tests and no network or call creation.
 - **Scenario foundation:** Added a strict fictional-patient and scenario schema plus one minimal appointment-scheduling fixture for dry-run validation.
@@ -444,9 +446,11 @@ Every bug entry must include:
 - [x] Video alert system established.
 - [x] PGAI black-box call mapping included.
 - [x] AI-assisted coding approach established: small Python pieces written by Salvatore with AI completion and review.
-- [x] Project execution started: repository and architecture phases are underway; implementation has not started.
+- [x] Project execution started: the non-call safety foundation is implemented, tested, licensed, merged, and documented.
 - [x] Architecture selected from current official documentation.
 - [x] Single outbound number configured.
+- [x] Configuration, immutable destination gate, fictional scenario schema, call IDs, artifact planning, and provider-free dry run complete.
+- [x] Issue #5 merged and closed; Issue #7 opened for the provider-ready conversation runtime without dialing.
 - [ ] First complete call approved.
 - [ ] Genuine debugging video recorded.
 - [ ] Minimum 10 strong calls complete.
