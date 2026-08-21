@@ -390,14 +390,19 @@ Every bug entry must include:
 
 #### 2026-08-21 - Work session 4
 
+- **Active time:** approximately 1.0 hour of guided implementation, review, safety verification, licensing, and publication.
+- **Elapsed session window:** approximately 59 minutes, from about 4:40 PM to 5:39 PM CDT, based on observable workspace activity.
+- **Cumulative recorded active time:** approximately 5.9 hours across four work sessions.
+- **Cumulative recorded elapsed time:** approximately 6 hours 6 minutes across the documented session windows.
 - **Configuration and safety:** Completed typed configuration loading, nonempty credential validation, exact 180-second enforcement, E.164 destination normalization, and the immutable approved-destination gate.
 - **Offline tests:** Added focused configuration, destination, scenario, call-ID, artifact-path, and dry-run tests. The complete suite passed with 49 tests and no network or call creation.
 - **Scenario foundation:** Added a strict fictional-patient and scenario schema plus one minimal appointment-scheduling fixture for dry-run validation.
 - **Artifact planning:** Added UTC call IDs using `S##-A##-YYYYMMDDThhmmssZ` and safe candidate paths under ignored `.local/candidates/<call-id>/` for audio, transcript, metadata, turn observations, review, and cost planning.
 - **Dry run:** Completed one local non-call readiness run. It loaded validated configuration and the fictional scenario, generated a call ID, and wrote only a non-secret ignored readiness plan. It initialized no provider clients, made no network request, and created no call resource.
 - **Validation:** `pip check` reported no broken requirements, `git diff --check` passed, and the repository-only `detect-secrets` scan reported 0 findings.
+- **Publication:** Added the custom challenge-evaluation and educational-use license, merged PR #6, and closed Issue #5 with every checklist item complete.
 - **Safety state:** No LiveKit room, SIP participant, OpenAI Realtime session, recording, or telephone call was created.
-- **Next starting point:** Review the complete Issue #5 diff, publish the focused branch after approval, and rotate previously exposed credentials before any provider-connected testing.
+- **Next starting point:** Continue Issue #7 on `agent/phase-4b-conversation-runtime`, beginning with credential rotation and the offline conversation-state model. Do not start any provider session or telephone call.
 
 ### Day 1 — Architecture and first complete call
 
