@@ -1,0 +1,22 @@
+{
+    "scenario_id": "S01",
+    "objective": "Evaluate whether PGAI can help a fictional patient request a routine primary-care appointment.",
+    "intended_outcome": "Obtain an offered appointment time or a clear, actionable next step.",
+    "steering_points": [
+        "State that the patient wants a routine primary-care appointment.",
+        "Prefer a weekday morning when PGAI asks about availability.",
+        "Confirm material appointment details before accepting an outcome."
+    ],
+    "safe_stopping_conditions": [
+        "The intended outcome or an actionable alternative is clearly stated.",
+        "PGAI requests real patient information or information outside the fictional profile.",
+        "The conversation moves into medical advice or emergency handling.",
+        "The controlled three-minute limit is approaching."
+    ],
+    "patient": {
+        "fictional": true,
+        "first_name": "Jamie",
+        "last_name": "Rivera",
+        "date_of_birth": "1988-04-12"
+    }
+}

@@ -115,7 +115,7 @@ Use these alerts during the build, **before** the corresponding action:
 
 - [X] Select and configure one outbound telephony number.
 - [X] Record the exact outbound E.164 number in a private submission worksheet.
-- [ ] Confirm the application rejects every dial target except `+18054398008`.
+- [X] Confirm the application rejects every dial target except `+18054398008`.
 - [X] Configure secrets locally through environment variables.
 - [X] Create `.env.example` containing the agreed LiveKit, OpenAI, Twilio, and project-safety variable names with safe comments and empty values.
 - [X] Configure two-sided recording before enabling outbound calls.
@@ -130,9 +130,9 @@ Use these alerts during the build, **before** the corresponding action:
 
 Salvatore writes each Python section in a small, reviewable piece with AI code completion. Do not generate the whole project from a single prompt.
 
-- [ ] Add configuration loading and validation.
-- [ ] Add a hard allowlist for the one approved destination number.
-- [ ] Define the scenario and patient-profile schema.
+- [X] Add configuration loading and validation.
+- [X] Add a hard allowlist for the one approved destination number.
+- [X] Define the scenario and patient-profile schema.
 - [ ] Define conversation state and intended-outcome tracking.
 - [ ] Implement telephony call creation using the single outbound number.
 - [ ] Implement the inbound/outbound audio stream.
@@ -146,8 +146,8 @@ Salvatore writes each Python section in a small, reviewable piece with AI code c
 - [ ] Implement two-sided post-call transcript generation or normalization.
 - [ ] Implement structured metadata and result saving.
 - [ ] Implement reproducible scripts for calling, transcription, and report generation.
-- [ ] Add focused tests for number allowlisting, configuration, scenario loading, and artifact naming.
-- [ ] Verify the smallest local/non-call path before enabling the first call.
+- [X] Add focused tests for number allowlisting, configuration, scenario loading, and artifact naming.
+- [X] Verify the smallest local/non-call path before enabling the first call.
 
 **[VIDEO 1 TALKING POINT]** Explain the data/audio flow, state tracking, scenario steering, and why the bot is dynamic rather than a rigid script.
 
@@ -374,6 +374,30 @@ Every bug entry must include:
 - **Safety state:** No telephone call, LiveKit room, SIP participant, or OpenAI Realtime session was created. No voice-bot implementation code was written.
 - **Deferred by decision:** Destination enforcement code and configuration-fixture tests remain Phase 4 work. The documented fail-closed contract requires no provider request for a missing, malformed, overridden, or non-approved destination.
 - **Next starting point:** Begin Phase 4 configuration loading and destination-allowlist code in small reviewable pieces, including the deferred fixture validation before any call path is enabled.
+
+#### 2026-08-19 - Work session 3
+
+- **Active time:** approximately 1.35 hours of repository preparation, dependency setup, configuration scaffolding, and guided implementation.
+- **Elapsed session window:** approximately 1 hour 21 minutes, from about 9:19 AM to 10:40 AM CDT.
+- **GitHub and branch:** Integrated and closed Issue #3, removed the no-longer-needed OpenAI API checklist, created the focused `agent/phase-4-non-call-safety` branch, and opened Issue #5 for the Phase 4 non-call safety foundation.
+- **Repository safety:** Confirmed `.env.local` and `.local/` are ignored and untracked using `git check-ignore`, `git ls-files`, `git status`, and `git diff`. Removed the temporary local test line and kept real values out of tracked files.
+- **Dependencies:** Added constrained LiveKit Agents, Pydantic, Pydantic Settings, `phonenumbers`, and pytest dependencies with comments explaining each purpose. Created the ignored virtual environment and verified package imports and dependency consistency offline.
+- **Configuration work:** Created `src/config.py` with its scope and safety contract, project-root `.env.local` loading through `SettingsConfigDict`, and typed LiveKit URL, API key, API secret, and outbound SIP trunk fields. Secret LiveKit fields use `SecretStr`.
+- **Validation:** Package imports passed, `pip check` reported no broken requirements, `git diff --check` passed, and the tracked-repository secret scan reported 0 findings.
+- **Safety state:** No provider-connected test, LiveKit room, SIP participant, OpenAI Realtime session, or telephone call was created. Configuration, destination enforcement, and focused tests remain incomplete.
+- **Credential hold:** Credentials visible during the guided setup must be rotated before any provider-connected or authenticated testing. Offline implementation may continue before rotation, but no exposed credential should be used again.
+- **Next starting point:** Rotate the exposed OpenAI, LiveKit, and Twilio credentials before connected testing. Continue `Settings` with the OpenAI, Twilio, destination, and duration fields; then add fail-closed validation, the settings loader, and focused offline tests.
+
+#### 2026-08-21 - Work session 4
+
+- **Configuration and safety:** Completed typed configuration loading, nonempty credential validation, exact 180-second enforcement, E.164 destination normalization, and the immutable approved-destination gate.
+- **Offline tests:** Added focused configuration, destination, scenario, call-ID, artifact-path, and dry-run tests. The complete suite passed with 49 tests and no network or call creation.
+- **Scenario foundation:** Added a strict fictional-patient and scenario schema plus one minimal appointment-scheduling fixture for dry-run validation.
+- **Artifact planning:** Added UTC call IDs using `S##-A##-YYYYMMDDThhmmssZ` and safe candidate paths under ignored `.local/candidates/<call-id>/` for audio, transcript, metadata, turn observations, review, and cost planning.
+- **Dry run:** Completed one local non-call readiness run. It loaded validated configuration and the fictional scenario, generated a call ID, and wrote only a non-secret ignored readiness plan. It initialized no provider clients, made no network request, and created no call resource.
+- **Validation:** `pip check` reported no broken requirements, `git diff --check` passed, and the repository-only `detect-secrets` scan reported 0 findings.
+- **Safety state:** No LiveKit room, SIP participant, OpenAI Realtime session, recording, or telephone call was created.
+- **Next starting point:** Review the complete Issue #5 diff, publish the focused branch after approval, and rotate previously exposed credentials before any provider-connected testing.
 
 ### Day 1 — Architecture and first complete call
 

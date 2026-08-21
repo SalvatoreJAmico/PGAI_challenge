@@ -1,1 +1,14 @@
-# Python dependencies will be added as the implementation develops.
+# LiveKit Agents plus its maintained OpenAI Realtime integration.
+livekit-agents[openai]>=1.5,<2
+
+# Typed validation for scenario, configuration, and artifact models.
+pydantic>=2,<3
+
+# Environment-backed settings without custom dotenv parsing.
+pydantic-settings>=2,<3
+
+# Standards-based E.164 parsing and normalization for the destination gate.
+phonenumbers>=9,<10
+
+# Focused offline tests for configuration, schemas, IDs, and safety rules.
+pytest>=8,<10

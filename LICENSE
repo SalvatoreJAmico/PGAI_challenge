@@ -1,0 +1,87 @@
+Challenge Evaluation and Educational Use License 1.0
+
+Copyright (c) 2026 Salvatore J. Amico. All rights reserved.
+
+1. Definitions
+
+"Software" means the source code, documentation, scenario definitions, tests,
+and other original materials in this repository, excluding third-party
+software and dependencies that are governed by their own licenses.
+
+"Evaluation Entity" means Pretty Good AI and its affiliates, employees,
+contractors, and agents acting on its behalf in connection with the challenge
+for which this Software was submitted.
+
+"Licensor" means Salvatore J. Amico.
+
+2. Personal Educational Permission
+
+The Licensor grants natural persons a limited, non-exclusive, non-transferable,
+revocable license to view, copy, run, and privately modify the Software solely
+for personal education, personal study, or noncommercial academic research.
+This permission does not apply to work performed for, funded by, directed by,
+or intended to benefit a business or other for-profit organization.
+
+3. Challenge Evaluation Permission
+
+The Licensor grants the Evaluation Entity a limited, non-exclusive,
+non-transferable, revocable license to view, copy, and run the Software solely
+as reasonably necessary to review, test, and evaluate the Licensor's challenge
+submission and candidacy.
+
+This permission does not authorize the Evaluation Entity to use the Software
+in production; provide it as a service; use it for business operations; use it
+to train or improve a commercial model or product; incorporate it or any
+substantial portion of it into another product, service, internal tool, or
+codebase; or exploit it for any purpose unrelated to evaluating this challenge
+submission.
+
+4. Prohibited Uses
+
+Except for the permissions expressly granted above, no person or entity may:
+
+a. use the Software for any commercial, corporate, revenue-generating, or
+   production purpose;
+b. sell, sublicense, publish, distribute, or make the Software available to
+   another person or entity;
+c. use the Software or its outputs to provide services to a third party;
+d. remove or alter copyright, attribution, or license notices;
+e. represent the Software as their own work; or
+f. use the Software in violation of applicable law or the safety restrictions
+   documented in the repository.
+
+5. No Implied Rights
+
+All rights not expressly granted by this license are reserved by the Licensor.
+No patent, trademark, trade-secret, or other intellectual-property license is
+granted by implication, estoppel, or otherwise. Any use outside these terms
+requires the Licensor's prior written permission under a separate agreement.
+
+6. Termination
+
+Any license granted under these terms terminates automatically upon violation.
+After termination, the violating party must stop using the Software and delete
+all copies in its possession or control, except copies that applicable law
+requires it to retain.
+
+7. Disclaimer of Warranty
+
+THE SOFTWARE IS PROVIDED "AS IS" AND WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, TITLE, AND NON-INFRINGEMENT. THE LICENSOR DOES NOT WARRANT THAT THE
+SOFTWARE IS ERROR-FREE, SECURE, OR SUITABLE FOR PRODUCTION OR MEDICAL USE.
+
+8. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE LICENSOR WILL NOT BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, CONSEQUENTIAL, OR OTHER
+DAMAGES ARISING FROM OR RELATED TO THE SOFTWARE OR THESE TERMS, UNDER ANY LEGAL
+THEORY, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+9. Third-Party Software
+
+Third-party libraries, services, APIs, and other dependencies remain subject to
+their respective license terms. This license applies only to original material
+the Licensor has the right to license.
+
+This is a custom source-available license. It is not an open-source license.
