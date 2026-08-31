@@ -95,7 +95,7 @@ Retries increment the attempt number and receive their own start timestamp. Iden
 The root artifact folders are canonical. Reusable scenario definitions use their scenario ID; every artifact produced by an individual call repeats the exact call ID:
 
 ```text
-scenarios/S01-appointment-scheduling.yaml
+scenarios/S01-appointment-scheduling.json
 recordings/S01-A01-20260817T143000Z.mp3
 transcripts/S01-A01-20260817T143000Z.md
 reports/metadata/S01-A01-20260817T143000Z.json
@@ -149,7 +149,7 @@ Use this section as a chronological record. Notes should capture what was observ
 - **Primary selected:** LiveKit Agents + Twilio SIP + OpenAI `gpt-realtime-2.1`.
 - **Backup selected:** Twilio bidirectional Media Streams + OpenAI `gpt-realtime-2.1`.
 - **Reasoning:** The bot must clear the coherent-conversation gate, but the project should concentrate engineering time on testing quality, useful bug discovery, evidence, and genuine debugging. LiveKit provides established voice infrastructure while leaving our scenario and evaluation logic in Python.
-- **Current state:** Architecture selected; implementation has not started.
+- **Current state:** Architecture selected; the non-call safety foundation and provider-ready conversation runtime are implemented and verified. LiveKit/OpenAI composition and the approved inert SIP request plan exist behind explicit boundaries. Starting the worker or room, creating the SIP participant and Realtime session, and making the first controlled call remain Phase 5 work.
 
 ### 2026-08-17 — Shared call-ID convention selected
 
@@ -211,10 +211,30 @@ Use this section as a chronological record. Notes should capture what was observ
 
 - **Context:** The assessment authorizes calls only to `+18054398008`; a missing or altered setting must never broaden that scope.
 - **Decision:** Treat `+18054398008` as the immutable approved destination. Before any provider request, require the configured value to exist, parse as E.164, normalize to the exact approved value, and reject missing, malformed, overridden, or different values without a fallback.
-- **Implementation status:** Contract documented during provider setup. Configuration loading, enforcement code, and fixture tests are deliberately deferred to Phase 4.
+- **Implementation result (2026-08-21):** Completed in Phase 4. Configuration loading normalizes the destination with `phonenumbers`, rejects missing, malformed, overridden, and different values, and has focused offline tests covering the fail-closed contract.
 - **Reasoning and tradeoff:** A configuration error stops execution instead of risking an unauthorized call. This is stricter than accepting arbitrary valid phone numbers and matches the challenge safety boundary.
 - **Architecture impact:** Shared by the primary and backup call paths.
 - **Loom talking point:** Show that both call paths use one immutable destination gate before contacting LiveKit or Twilio.
+
+### 2026-08-31 - Runtime scope narrowed to assignment-relevant behavior
+
+- **Context:** Early Issue #7 implementation began accumulating safeguards for risks that are unlikely in this closed, locally controlled assessment simulation.
+- **Decision:** Build the smallest runtime that satisfies the challenge and supports credible call evaluation. Retain the approved-destination gate, one caller identity, 180-second maximum, fictional-patient constraint, no-medical-advice rule, outcome confirmation, silence and repeated-loop recovery, and evidence tracking.
+- **Excluded scope:** Do not add speculative defenses for outside attackers, hostile locally reviewed scenario files, production abuse, or generalized security cases unless a reproduced issue makes one necessary.
+- **Reasoning and tradeoff:** A narrower implementation reduces code volume and review burden, speeds the first controlled call, and keeps the work centered on conversation quality and bug evidence. It accepts risks that are not material to this one-purpose challenge environment.
+- **Result:** Removed generic unsafe-branch handling, credential and payment attack prompt rules, immutable internal wrappers, trusted-code mutation defenses, and non-finite timer edge handling. Future Issue #7 work should prefer direct provider composition, call-request validation, evidence interfaces, and rehearsal over additional safety abstractions.
+- **Architecture impact:** Primary architecture unchanged; implementation scope reduced.
+- **Loom talking point:** Explain how scope was deliberately reduced after reviewing which risks the closed assessment actually presents.
+
+### 2026-08-31 - Provider-ready MVP completed without dialing
+
+- **Context:** Issue #7 must finish the local implementation immediately before the first controlled live test while creating no provider or call resource.
+- **Decision:** Compose LiveKit `AgentSession` with the OpenAI Realtime model only inside an explicit factory. Represent the future stored-trunk SIP request as inert validated data, recheck the approved destination at that boundary, and keep actual SIP participant creation in Phase 5.
+- **Evidence design:** Use the existing call ID for the provider recording reference, speaker-labelled transcript turns, call metadata, human review, and cost entry. Do not create these records with fabricated provider values during rehearsal.
+- **Rehearsal result:** The provider-free S01 rehearsal exercised discovery, steering, confirmation, confirmed outcome, and closing, wrote one ignored local JSON record, and ended in `completion` without network access.
+- **Verification:** 121 offline tests passed along with the dry run, compilation, dependency, whitespace, ignore, and targeted tracked-file credential checks.
+- **Architecture impact:** Primary architecture is ready for one separately authorized Phase 5 live test.
+- **Loom talking point:** Show the explicit boundary between inert, fully tested call planning and the single future line that creates a LiveKit SIP participant.
 
 ### Note template
 

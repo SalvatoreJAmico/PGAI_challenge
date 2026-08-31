@@ -69,3 +69,60 @@ credentials, private provider identifiers, and `.env.local` values.
   generated a UTC call ID, and wrote only an ignored readiness plan.
 - No provider client, network request, LiveKit room, SIP participant, Realtime
   session, recording, or telephone call was created.
+
+## 2026-08-31 — Issue #7 runtime scope decision
+
+- **Decision:** AI may implement the code in small increments, explain and show
+  each change, run focused offline tests, and wait for Salvatore's review and
+  permission before moving to the next increment.
+- **User priority:** Move through the challenge quickly enough to complete the
+  project while retaining enough explanation for Salvatore to understand and
+  describe the code.
+- **Scope correction:** Keep only controls that directly support the assignment
+  or constrain plausible voice-agent behavior. Do not expand the implementation
+  for hypothetical outside attacks, hostile local scenario files, or
+  production-grade abuse cases that are unlikely in this closed simulation.
+- **Controls retained:** Immutable assessment destination, one caller identity,
+  180-second maximum, fictional-patient boundaries, no medical advice,
+  confirmation before success, silence and repeated-loop handling, and
+  evidence-linked outcomes.
+- **Accepted tradeoff:** Locally reviewed scenario fixtures and the existing
+  repository secret scan are sufficient for this challenge; no additional
+  scenario-content threat scanner will be added unless an observed problem
+  justifies it.
+- **MVP reduction:** Removed generic unsafe-branch input, prompt rules for
+  credential and payment attacks, immutable internal state wrappers,
+  mutation-bypass defenses for trusted local code, and non-finite timer edge
+  handling. These controls did not materially help the closed assessment.
+- **Remaining runtime controls:** The state path, outcome confirmation,
+  fictional-patient and no-medical-advice prompt rules, 165-second closing
+  window, 180-second maximum, silence recovery, and repeated-loop stop remain
+  because they directly affect assignment compliance or call quality.
+
+### Provider-ready MVP result
+
+- **Provider composition:** Added one explicit factory for the installed
+  LiveKit `Agent`, OpenAI Realtime model, and `AgentSession`. Imports construct
+  nothing, and mocked tests prove failures do not continue into session or
+  agent construction.
+- **Call request:** Added an inert request plan built only from validated
+  settings, scenario, and artifact objects. It revalidates the immutable PGAI
+  destination and exposes no destination override.
+- **Evidence:** Added minimum call-ID-linked records for the provider recording,
+  speaker-labelled transcript turns, metadata, human review, and cost.
+- **Rehearsal:** Ran S01 through discovery, steering, confirmation, confirmed
+  outcome, and closing without provider objects or network access. The ignored
+  rehearsal record ended in `completion`.
+- **Verification:** The complete offline suite passed 121 tests. The dry run,
+  rehearsal, compile check, dependency check, `git diff --check`, ignore proof,
+  and targeted tracked-file credential scan passed. `detect-secrets` was not
+  installed, so the targeted scan result is recorded instead of claiming that
+  tool ran.
+- **Safety state:** No worker, room, SIP participant, Realtime session,
+  recording, or telephone call was created.
+- **Final review:** Salvatore reviewed the implementation incrementally, asked
+  for the provider responsibilities, SIP/RTP path, latency expectations, first
+  scenario, and MVP scope to be explained, and authorized completion of the
+  offline test and publication gate.
+- **Publication state:** Finalized S01, reran 121 offline tests, and prepared
+  draft PR #8 to merge and close Issue #7 before Phase 5 begins.

@@ -1,10 +1,10 @@
 # Pretty Good AI Engineering Challenge — Live Roadmap
 
-**Status:** Architecture selection and Phase 2 pre-call planning complete; implementation not started
-**Working pace:** One or two steps at a time; Salvatore writes the Python in small pieces with AI code completion and review  
+**Status:** Phase 4B and Issue #7 are complete; Phase 5 one-call integration is next; no provider session or telephone call has been created
+**Working pace:** AI implements one small offline section at a time, explains and shows the code, runs focused tests, and waits for Salvatore's review and permission before continuing
 **Expected duration:** Four working days, with a fifth contingency day if integration or call quality requires it  
 **Assessment destination:** `+18054398008` only  
-**Outbound number:** Not yet selected — after selection, use exactly that one E.164 number for every assessment call
+**Outbound number:** One Twilio number is selected and recorded privately in E.164 format; use exactly that number for every assessment call
 
 ## Current architecture direction
 
@@ -14,6 +14,9 @@
 - **Fallback rule:** Switch only after preserving and diagnosing a reproducible LiveKit/SIP/deployment/audio/recording blocker. The backup reuses the Twilio number, OpenAI model, scenarios, prompts, identifiers, and evidence format.
 - **Working record:** Architecture reasoning and implementation observations belong in `ARCHITECTURE_DEV.md`. The concise reviewer-facing explanation will be finalized in `submission/ARCHITECTURE.md` after call evidence exists.
 - **Cost posture:** Track all usage and preserve receipts, but do not sacrifice the strongest overall architecture merely to remain under the $20 reimbursement amount.
+- **Implementation scope:** Optimize for satisfying the challenge rather than production-grade threat coverage. Keep controls that directly constrain agent behavior, the approved destination, the 180-second call limit, fictional-patient use, confirmation accuracy, silence or loop handling, and evidence quality. Do not add speculative defenses for outside attackers or locally reviewed scenario files unless an observed problem requires them.
+- **Credential posture for this project:** Continue using the existing ignored local credentials under the user's accepted-risk decision. Rotate only if a credential enters Git, logs, tracked documentation, test output, or another unintended location. This exception applies only to this challenge project.
+- **MVP runtime state:** Conversation decisions, fictional-patient instructions, offline LiveKit/OpenAI composition, an approved inert call-request plan, minimum evidence records, and a provider-free S01 rehearsal are implemented. The first provider connection and telephone call remain Phase 5 work.
 
 ## Non-negotiable safety gates
 
@@ -266,9 +269,9 @@ Every bug entry must include:
 
 - [ ] Working, clean, understandable Python code.
 - [ ] Clear repository structure.
-- [ ] `README.md` with prerequisites, setup, configuration, safety rules, and run instructions.
+- [X] `README.md` with prerequisites, setup, configuration, safety rules, and current non-call run instructions.
 - [ ] README ideally supports one command after initial configuration.
-- [ ] README briefly discloses AI-assisted development.
+- [X] README briefly discloses AI-assisted development.
 - [ ] `submission/ARCHITECTURE.md` contains at least one or two strong paragraphs covering:
   - How the system works
   - Data and audio flow
@@ -278,8 +281,8 @@ Every bug entry must include:
   - Relevant tradeoffs
   - Why the final design fits the challenge
   - Whether a Realtime API was used and why
-- [ ] Safe `.env.example` with all required variables.
-- [ ] Dependency file.
+- [X] Safe `.env.example` with all required variables.
+- [X] Dependency file.
 - [ ] At least 10 MP3 or OGG recordings.
 - [ ] At least 10 corresponding two-sided transcripts.
 - [ ] Scenario definitions and call-result metadata.
@@ -388,21 +391,39 @@ Every bug entry must include:
 - **Credential hold:** Credentials visible during the guided setup must be rotated before any provider-connected or authenticated testing. Offline implementation may continue before rotation, but no exposed credential should be used again.
 - **Next starting point:** Rotate the exposed OpenAI, LiveKit, and Twilio credentials before connected testing. Continue `Settings` with the OpenAI, Twilio, destination, and duration fields; then add fail-closed validation, the settings loader, and focused offline tests.
 
-#### 2026-08-21 - Work session 4
+#### 2026-08-21 - Work sessions 4–6
 
+- **Session count:** Three separate intermittent sessions, divided by two explicit user-requested pauses and later resumes in the development chat.
+- **Best-effort session estimates:** Session 4 approximately 30 minutes, Session 5 approximately 35 minutes, and Session 6 approximately 1 hour 20 minutes of active work. These estimates carry roughly ±30 minutes of total uncertainty because message timestamps are unavailable.
+- **Estimated August 21 active time:** approximately 2 hours 25 minutes across the three intermittent sessions; pause time and personal-chore time are excluded.
+- **Estimated cumulative active time:** approximately 7 hours 20 minutes across six sessions, combining the 4.9 recorded active hours from Sessions 1–3 with the August 21 estimate.
+- **Estimated cumulative working-session time:** approximately 7 hours 32 minutes, excluding the unknown gaps between August 21 sessions.
 - **Configuration and safety:** Completed typed configuration loading, nonempty credential validation, exact 180-second enforcement, E.164 destination normalization, and the immutable approved-destination gate.
 - **Offline tests:** Added focused configuration, destination, scenario, call-ID, artifact-path, and dry-run tests. The complete suite passed with 49 tests and no network or call creation.
 - **Scenario foundation:** Added a strict fictional-patient and scenario schema plus one minimal appointment-scheduling fixture for dry-run validation.
 - **Artifact planning:** Added UTC call IDs using `S##-A##-YYYYMMDDThhmmssZ` and safe candidate paths under ignored `.local/candidates/<call-id>/` for audio, transcript, metadata, turn observations, review, and cost planning.
 - **Dry run:** Completed one local non-call readiness run. It loaded validated configuration and the fictional scenario, generated a call ID, and wrote only a non-secret ignored readiness plan. It initialized no provider clients, made no network request, and created no call resource.
 - **Validation:** `pip check` reported no broken requirements, `git diff --check` passed, and the repository-only `detect-secrets` scan reported 0 findings.
+- **Publication:** Added the custom challenge-evaluation and educational-use license, merged PR #6, and closed Issue #5 with every checklist item complete.
 - **Safety state:** No LiveKit room, SIP participant, OpenAI Realtime session, recording, or telephone call was created.
-- **Next starting point:** Review the complete Issue #5 diff, publish the focused branch after approval, and rotate previously exposed credentials before any provider-connected testing.
+- **Next starting point:** Continue Issue #7 on `agent/phase-4b-conversation-runtime`, beginning with credential rotation and the offline conversation-state model. Do not start any provider session or telephone call.
+
+#### 2026-08-31 - Work session 7
+
+- **Scope decision:** Reduced the runtime to the challenge MVP and retained only assignment-relevant destination, duration, fictional-patient, confirmation, silence, loop, and evidence behavior.
+- **Conversation runtime:** Completed and reviewed states, transitions, outcome decisions, early closing, silence recovery, repeated-loop handling, and dynamic fictional-patient instructions.
+- **Provider boundary:** Verified the installed LiveKit/OpenAI APIs against official documentation and added explicit in-memory composition without starting a worker, room, or Realtime session.
+- **Call planning and evidence:** Added an inert approved SIP request plan with destination revalidation plus minimum call-ID-linked recording, transcript, metadata, review, and cost interfaces.
+- **Rehearsal:** Finalized S01 as a routine non-urgent appointment request and completed the provider-free discovery, steering, confirmation, outcome, and closing path.
+- **Final verification:** 121 offline tests passed. Compilation, dependency, whitespace, ignore, dry-run, rehearsal, staged-diff, and targeted workspace credential checks passed.
+- **Publication:** Published the provider-ready runtime and S01 fixture in draft PR #8. Issue #7 has every implementation and verification requirement complete.
+- **Safety state:** No LiveKit worker or room, SIP participant, OpenAI Realtime session, provider recording, or telephone call was created.
+- **Next starting point:** Begin a separate Phase 5 issue for exactly one authorized S01 live call followed by immediate recording, transcript, latency, and outcome review.
 
 ### Day 1 — Architecture and first complete call
 
 - [ ] Phases 0–3: workspace, official documentation, architecture, map, and safe configuration.
-- [ ] Phase 4: smallest end-to-end bot, written in small Python pieces.
+- [x] Phase 4: smallest provider-ready bot, written and reviewed in small Python pieces without dialing.
 - [ ] Phase 5: one controlled call only.
 - [ ] Listen, inspect, and decide whether it meets the quality bar.
 
@@ -440,9 +461,11 @@ Every bug entry must include:
 - [x] Video alert system established.
 - [x] PGAI black-box call mapping included.
 - [x] AI-assisted coding approach established: small Python pieces written by Salvatore with AI completion and review.
-- [x] Project execution started: repository and architecture phases are underway; implementation has not started.
+- [x] Project execution started: the non-call safety foundation is implemented, tested, licensed, merged, and documented.
 - [x] Architecture selected from current official documentation.
 - [x] Single outbound number configured.
+- [x] Configuration, immutable destination gate, fictional scenario schema, call IDs, artifact planning, and provider-free dry run complete.
+- [x] Issues #5 and #7 completed for the non-call safety foundation and provider-ready conversation runtime without dialing.
 - [ ] First complete call approved.
 - [ ] Genuine debugging video recorded.
 - [ ] Minimum 10 strong calls complete.
