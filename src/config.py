@@ -81,29 +81,35 @@ class Settings(BaseSettings):
     @field_validator("pgai_destination_number")
     @classmethod
     def validate_destination(cls, value: str) -> str:
-        try:
-            parsed_number = phonenumbers.parse(value, "US")
-        except NumberParseException as exc:
-            raise ValueError(
-                "PGAI destination must be a valid phone number"
-            ) from exc
+        return normalize_approved_destination(value)
 
-        if not phonenumbers.is_valid_number(parsed_number):
-            raise ValueError(
-                "PGAI destination must be a valid phone number"
-            )
 
-        normalized_number = phonenumbers.format_number(
-            parsed_number,
-            PhoneNumberFormat.E164,
+def normalize_approved_destination(value: str) -> str:
+    """Normalize and require the one approved assessment destination."""
+
+    try:
+        parsed_number = phonenumbers.parse(value, "US")
+    except NumberParseException as exc:
+        raise ValueError(
+            "PGAI destination must be a valid phone number"
+        ) from exc
+
+    if not phonenumbers.is_valid_number(parsed_number):
+        raise ValueError(
+            "PGAI destination must be a valid phone number"
         )
 
-        if normalized_number != APPROVED_DESTINATION:
-            raise ValueError(
-                "PGAI destination is not the approved assessment number"
-            )
+    normalized_number = phonenumbers.format_number(
+        parsed_number,
+        PhoneNumberFormat.E164,
+    )
 
-        return normalized_number
+    if normalized_number != APPROVED_DESTINATION:
+        raise ValueError(
+            "PGAI destination is not the approved assessment number"
+        )
+
+    return normalized_number
 
 
 def load_settings() -> Settings:

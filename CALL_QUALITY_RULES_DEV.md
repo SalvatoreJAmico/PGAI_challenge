@@ -66,8 +66,8 @@ The test bot must stop or move to closure when:
 - The intended outcome or acceptable alternative is complete.
 - The three-minute maximum is approaching.
 - The repeated-loop or silence limit is reached.
-- PGAI requests real patient information, credentials, payment data, or another value outside the fictional scenario.
-- The conversation moves into medical advice, emergency handling, abuse, prohibited activity, or another unsafe branch.
+- PGAI requires real patient information outside the fictional profile.
+- The conversation requires the test bot to give medical advice.
 - Audio or connection quality makes continued interaction unreliable.
 - PGAI has transferred, disconnected, or clearly ended the interaction.
 

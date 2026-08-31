@@ -1,7 +1,7 @@
 # Pretty Good AI Engineering Challenge — Live Roadmap
 
-**Status:** Non-call safety foundation merged; Issue #7 provider-ready conversation runtime is next; no provider session or telephone call has been created
-**Working pace:** One or two steps at a time; Salvatore writes the Python in small pieces with AI code completion and review  
+**Status:** Issue #7 provider-ready conversation runtime is implemented and under final review; no provider session or telephone call has been created
+**Working pace:** AI implements one small offline section at a time, explains and shows the code, runs focused tests, and waits for Salvatore's review and permission before continuing
 **Expected duration:** Four working days, with a fifth contingency day if integration or call quality requires it  
 **Assessment destination:** `+18054398008` only  
 **Outbound number:** One Twilio number is selected and recorded privately in E.164 format; use exactly that number for every assessment call
@@ -14,6 +14,9 @@
 - **Fallback rule:** Switch only after preserving and diagnosing a reproducible LiveKit/SIP/deployment/audio/recording blocker. The backup reuses the Twilio number, OpenAI model, scenarios, prompts, identifiers, and evidence format.
 - **Working record:** Architecture reasoning and implementation observations belong in `ARCHITECTURE_DEV.md`. The concise reviewer-facing explanation will be finalized in `submission/ARCHITECTURE.md` after call evidence exists.
 - **Cost posture:** Track all usage and preserve receipts, but do not sacrifice the strongest overall architecture merely to remain under the $20 reimbursement amount.
+- **Implementation scope:** Optimize for satisfying the challenge rather than production-grade threat coverage. Keep controls that directly constrain agent behavior, the approved destination, the 180-second call limit, fictional-patient use, confirmation accuracy, silence or loop handling, and evidence quality. Do not add speculative defenses for outside attackers or locally reviewed scenario files unless an observed problem requires them.
+- **Credential posture for this project:** Continue using the existing ignored local credentials under the user's accepted-risk decision. Rotate only if a credential enters Git, logs, tracked documentation, test output, or another unintended location. This exception applies only to this challenge project.
+- **MVP runtime state:** Conversation decisions, fictional-patient instructions, offline LiveKit/OpenAI composition, an approved inert call-request plan, minimum evidence records, and a provider-free S01 rehearsal are implemented. The first provider connection and telephone call remain Phase 5 work.
 
 ## Non-negotiable safety gates
 

@@ -7,7 +7,8 @@ Automated voice bot for running realistic patient conversations against the Pret
 The local non-call safety foundation is complete. It includes typed
 configuration, an immutable normalized destination gate, fictional scenario
 validation, UTC call IDs, safe artifact planning, and a provider-free dry run.
-The conversation runtime and provider composition are tracked in Issue #7.
+The provider-ready conversation runtime, inert outbound request plan, minimum
+evidence schemas, and provider-free rehearsal are implemented in Issue #7.
 No LiveKit room, SIP participant, OpenAI Realtime session, or telephone call
 has been created by the implementation.
 
@@ -39,6 +40,16 @@ Run the provider-free readiness check from the repository root:
 The dry run writes only a non-secret readiness plan under ignored
 `.local/candidates/`; it does not initialize provider clients, use the network,
 or create a call resource.
+
+Run the provider-free S01 conversation rehearsal:
+
+```powershell
+.\.venv\Scripts\python.exe -m src.rehearsal
+```
+
+The rehearsal exercises discovery, steering, confirmation, and closing through
+the runtime state and decision code. It writes only an ignored local rehearsal
+record and creates no provider or call resource.
 
 ## Development process
 
