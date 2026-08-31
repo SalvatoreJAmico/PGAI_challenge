@@ -11,9 +11,12 @@ Phase 4B is complete. Phase 5 has executed exactly one separately authorized
 S01 call through LiveKit, Twilio SIP, and OpenAI Realtime. The private candidate
 evidence contains a dual-channel recording, speaker-labelled transcript,
 metadata, latency observations, and a human-reviewed technical assessment.
-The first call exposed three focused conversational defects that must be fixed
-before a separately authorized retry. Provider cost had not posted when the
-review was closed and is recorded as unavailable rather than estimated.
+The first call exposed three focused conversational defects. One separately
+authorized retry showed substantially better turn discipline and reached a
+fully stated appointment choice, but it hit the duration limit before PGAI
+confirmed completion. The remaining refinements are complete compound-choice
+answers, less repetition, and lower response silence. No further call is
+authorized. Provider cost was unavailable and was not estimated.
 
 ## Local setup
 

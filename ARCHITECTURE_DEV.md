@@ -262,6 +262,26 @@ Use this section as a chronological record. Notes should capture what was observ
 - **Loom talking point:** Show the pre-dispatch worker configuration failure,
   the narrow fix, the one-call evidence chain, and the observed overlap.
 
+### 2026-08-31 - S01 retry improved turns but reached duration limit
+
+- **Context:** A02 was separately authorized after A01 showed overanswering,
+  failure to adapt to a fictional demo premise, and speech after goodbye.
+- **Observed behavior:** Concise current-question responses worked for identity,
+  DOB, visit confirmation, provider preference, and time. The call reached a
+  fully specified appointment choice but ended at the provider duration limit
+  before PGAI confirmed completion.
+- **Evidence:** Twilio reported 177 billed seconds and one private dual-channel
+  recording. Human review found an incomplete compound-choice answer,
+  unnecessary repetition in yes/no confirmation, and approximately 12-13
+  seconds of silence before complex booking responses.
+- **Decision:** Keep the architecture. Refine the behavioral instructions to
+  answer all decisions in the current turn, avoid repeated known details, and
+  respond promptly without scripted wording. Make no additional call in this
+  issue.
+- **Architecture impact:** Primary unchanged; conversation policy refined.
+- **Loom talking point:** Compare A01's overanswering with A02's improved turn
+  discipline and explain why A02 is still partial rather than a success.
+
 ### Note template
 
 #### YYYY-MM-DD — Short decision or observation

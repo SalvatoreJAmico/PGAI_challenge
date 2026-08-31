@@ -10,7 +10,7 @@ from src.live_call import SCENARIO_PATH
 from src.scenario import load_scenario
 
 
-CALL_ID = "S01-A01-20260831T195646Z"
+CALL_ID = "S01-A02-20260831T214854Z"
 CONFIRMED_RECORDING_STATUS = "confirmed_dual_from_answer"
 
 

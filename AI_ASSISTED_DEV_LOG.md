@@ -155,3 +155,24 @@ credentials, private provider identifiers, and `.env.local` values.
   move the three corrections to a focused follow-up issue. No retry or second
   call was attempted or authorized. Provider cost had not posted at closure and
   was recorded as unavailable rather than estimated.
+
+## 2026-08-31 - Issue #10 S01 correction and A02 retry
+
+- **Correction:** Updated the patient policy to listen to the complete turn,
+  answer only current decisions, retain safe fictional demo-profile facts, and
+  stop on goodbye. Added a deterministic LiveKit final-transcript handler that
+  interrupts and closes the session when PGAI says goodbye.
+- **Verification:** The corrected preflight passed and the complete offline
+  suite reached 137 passing tests before authorization.
+- **Authorization:** Salvatore authorized exactly one A02 retry after reviewing
+  its fixed call ID, destination, caller, recording, duration, and commands.
+- **Observed improvement:** Jamie gave concise separate answers for identity,
+  DOB, routine-care confirmation, provider preference, and time. It requested
+  the missing location and ultimately selected a fully specified appointment.
+- **Remaining findings:** A compound time/provider choice received only a time
+  answer; yes/no confirmation repeated known details; and complex booking turns
+  included approximately 12-13 seconds of response silence.
+- **Outcome:** `partial`. The duration limit ended the call before PGAI
+  confirmed the booking or said goodbye. No further call was authorized or
+  attempted. Instructions were refined behaviorally, without scripting exact
+  responses, and the next work moves to a separate focused issue.

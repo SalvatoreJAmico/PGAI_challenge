@@ -153,3 +153,28 @@ appointment, but it supplied an actionable next step and transfer. Before a
 retry, the patient agent must use this loop: listen, answer only the current
 question, listen again, adopt provider-established fictional demo facts, and
 stop immediately after a clear goodbye.
+
+## Observed S01 retry map
+
+**Call:** `S01-A02-20260831T214854Z`
+
+1. PGAI recognized the caller number and asked whether it was speaking with
+   Jamie.
+2. Jamie answered identity, DOB, routine-care confirmation, provider
+   preference, and time preference in separate turns.
+3. PGAI offered morning or afternoon and named two doctors. Jamie selected only
+   morning instead of resolving both choices in the turn.
+4. PGAI offered Tuesday, September 1 at 10 a.m. Jamie requested the missing
+   location before booking.
+5. PGAI supplied the location and repeated the provider choice.
+6. Jamie selected Dr. Kelly Noble and confirmed date, time, visit type, and
+   location before asking PGAI to book.
+7. The provider duration limit ended the call before PGAI confirmed completion
+   or said goodbye.
+
+**Observed outcome:** Partial. Turn discipline improved substantially, but
+compound choices were not always answered completely, some confirmations
+repeated known details, and complex responses included approximately 12-13
+seconds of silence. The next policy is behavioral rather than scripted: answer
+all decisions presented in the current turn, avoid echoing accurate yes/no
+confirmations, and respond promptly in natural wording.

@@ -8,6 +8,8 @@ from src.call_request import CallRequestPlan
 from src.live_call import (
     build_sip_participant_request,
     create_sip_participant,
+    is_terminal_goodbye,
+    register_goodbye_stop,
 )
 
 
@@ -50,3 +52,36 @@ def test_import_does_not_start_worker_or_create_call() -> None:
 
     run_app.assert_not_called()
     importlib.reload(live_call_module)
+
+
+def test_only_clear_goodbye_is_terminal() -> None:
+    assert is_terminal_goodbye("Hello, this is the test line. Goodbye.")
+    assert is_terminal_goodbye("Good-bye for now.")
+    assert not is_terminal_goodbye("How may I help you today?")
+
+
+def test_goodbye_handler_interrupts_and_closes_session() -> None:
+    async def exercise() -> None:
+        callbacks = {}
+        session = Mock()
+        session.interrupt = Mock()
+        session.aclose = AsyncMock()
+        session.on = lambda event, callback: callbacks.setdefault(
+            event,
+            callback,
+        )
+        register_goodbye_stop(session)
+
+        callback = callbacks["user_input_transcribed"]
+        callback(
+            live_call_module.UserInputTranscribedEvent(
+                transcript="Goodbye.",
+                is_final=True,
+            )
+        )
+        await asyncio.sleep(0)
+
+        session.interrupt.assert_called_once_with(force=True)
+        session.aclose.assert_awaited_once()
+
+    asyncio.run(exercise())
