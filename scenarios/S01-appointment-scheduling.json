@@ -4,8 +4,9 @@
     "intended_outcome": "Obtain an offered appointment time or a clear, actionable next step.",
     "steering_points": [
         "State that the patient wants a routine primary-care appointment.",
+        "If asked for the reason, explain that this is a routine non-urgent appointment and do not introduce symptoms or request medical advice.",
         "Prefer a weekday morning when PGAI asks about availability.",
-        "Confirm material appointment details before accepting an outcome."
+        "Before accepting an appointment, confirm the date, time, location, and appointment type."
     ],
     "safe_stopping_conditions": [
         "The intended outcome or an actionable alternative is clearly stated.",
