@@ -1,6 +1,6 @@
 # Pretty Good AI Engineering Challenge — Live Roadmap
 
-**Status:** Issue #7 provider-ready conversation runtime is implemented and under final review; no provider session or telephone call has been created
+**Status:** Phase 4B and Issue #7 are complete; Phase 5 one-call integration is next; no provider session or telephone call has been created
 **Working pace:** AI implements one small offline section at a time, explains and shows the code, runs focused tests, and waits for Salvatore's review and permission before continuing
 **Expected duration:** Four working days, with a fifth contingency day if integration or call quality requires it  
 **Assessment destination:** `+18054398008` only  
@@ -408,10 +408,22 @@ Every bug entry must include:
 - **Safety state:** No LiveKit room, SIP participant, OpenAI Realtime session, recording, or telephone call was created.
 - **Next starting point:** Continue Issue #7 on `agent/phase-4b-conversation-runtime`, beginning with credential rotation and the offline conversation-state model. Do not start any provider session or telephone call.
 
+#### 2026-08-31 - Work session 7
+
+- **Scope decision:** Reduced the runtime to the challenge MVP and retained only assignment-relevant destination, duration, fictional-patient, confirmation, silence, loop, and evidence behavior.
+- **Conversation runtime:** Completed and reviewed states, transitions, outcome decisions, early closing, silence recovery, repeated-loop handling, and dynamic fictional-patient instructions.
+- **Provider boundary:** Verified the installed LiveKit/OpenAI APIs against official documentation and added explicit in-memory composition without starting a worker, room, or Realtime session.
+- **Call planning and evidence:** Added an inert approved SIP request plan with destination revalidation plus minimum call-ID-linked recording, transcript, metadata, review, and cost interfaces.
+- **Rehearsal:** Finalized S01 as a routine non-urgent appointment request and completed the provider-free discovery, steering, confirmation, outcome, and closing path.
+- **Final verification:** 121 offline tests passed. Compilation, dependency, whitespace, ignore, dry-run, rehearsal, staged-diff, and targeted workspace credential checks passed.
+- **Publication:** Published the provider-ready runtime and S01 fixture in draft PR #8. Issue #7 has every implementation and verification requirement complete.
+- **Safety state:** No LiveKit worker or room, SIP participant, OpenAI Realtime session, provider recording, or telephone call was created.
+- **Next starting point:** Begin a separate Phase 5 issue for exactly one authorized S01 live call followed by immediate recording, transcript, latency, and outcome review.
+
 ### Day 1 — Architecture and first complete call
 
 - [ ] Phases 0–3: workspace, official documentation, architecture, map, and safe configuration.
-- [ ] Phase 4: smallest end-to-end bot, written in small Python pieces.
+- [x] Phase 4: smallest provider-ready bot, written and reviewed in small Python pieces without dialing.
 - [ ] Phase 5: one controlled call only.
 - [ ] Listen, inspect, and decide whether it meets the quality bar.
 
@@ -453,7 +465,7 @@ Every bug entry must include:
 - [x] Architecture selected from current official documentation.
 - [x] Single outbound number configured.
 - [x] Configuration, immutable destination gate, fictional scenario schema, call IDs, artifact planning, and provider-free dry run complete.
-- [x] Issue #5 merged and closed; Issue #7 opened for the provider-ready conversation runtime without dialing.
+- [x] Issues #5 and #7 completed for the non-call safety foundation and provider-ready conversation runtime without dialing.
 - [ ] First complete call approved.
 - [ ] Genuine debugging video recorded.
 - [ ] Minimum 10 strong calls complete.

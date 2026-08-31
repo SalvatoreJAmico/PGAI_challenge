@@ -120,3 +120,9 @@ credentials, private provider identifiers, and `.env.local` values.
   tool ran.
 - **Safety state:** No worker, room, SIP participant, Realtime session,
   recording, or telephone call was created.
+- **Final review:** Salvatore reviewed the implementation incrementally, asked
+  for the provider responsibilities, SIP/RTP path, latency expectations, first
+  scenario, and MVP scope to be explained, and authorized completion of the
+  offline test and publication gate.
+- **Publication state:** Finalized S01, reran 121 offline tests, and prepared
+  draft PR #8 to merge and close Issue #7 before Phase 5 begins.

@@ -149,7 +149,7 @@ Use this section as a chronological record. Notes should capture what was observ
 - **Primary selected:** LiveKit Agents + Twilio SIP + OpenAI `gpt-realtime-2.1`.
 - **Backup selected:** Twilio bidirectional Media Streams + OpenAI `gpt-realtime-2.1`.
 - **Reasoning:** The bot must clear the coherent-conversation gate, but the project should concentrate engineering time on testing quality, useful bug discovery, evidence, and genuine debugging. LiveKit provides established voice infrastructure while leaving our scenario and evaluation logic in Python.
-- **Current state:** Architecture selected and the non-call safety foundation is implemented and merged. Provider composition, conversation runtime, and all real call behavior remain unimplemented.
+- **Current state:** Architecture selected; the non-call safety foundation and provider-ready conversation runtime are implemented and verified. LiveKit/OpenAI composition and the approved inert SIP request plan exist behind explicit boundaries. Starting the worker or room, creating the SIP participant and Realtime session, and making the first controlled call remain Phase 5 work.
 
 ### 2026-08-17 — Shared call-ID convention selected
 

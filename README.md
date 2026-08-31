@@ -7,8 +7,10 @@ Automated voice bot for running realistic patient conversations against the Pret
 The local non-call safety foundation is complete. It includes typed
 configuration, an immutable normalized destination gate, fictional scenario
 validation, UTC call IDs, safe artifact planning, and a provider-free dry run.
-The provider-ready conversation runtime, inert outbound request plan, minimum
-evidence schemas, and provider-free rehearsal are implemented in Issue #7.
+Phase 4B is complete. The provider-ready conversation runtime, inert outbound
+request plan, minimum evidence schemas, finalized S01 fixture, and provider-free
+rehearsal are implemented and verified. Phase 5 begins with one separately
+authorized controlled live call.
 No LiveKit room, SIP participant, OpenAI Realtime session, or telephone call
 has been created by the implementation.
 
