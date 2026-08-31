@@ -58,6 +58,9 @@ def test_candidate_artifact_plan_stays_under_ignored_root() -> None:
             plan.turn_observations,
             plan.call_review,
             plan.cost_entry,
+            plan.recording_reference,
+            plan.readiness,
+            plan.retrieval_notes,
         )
     )
 
@@ -72,6 +75,9 @@ def test_candidate_plan_includes_every_required_artifact() -> None:
         "turn_observations",
         "call_review",
         "cost_entry",
+        "recording_reference",
+        "readiness",
+        "retrieval_notes",
     }
 
 
