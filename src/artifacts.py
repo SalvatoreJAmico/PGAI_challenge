@@ -23,6 +23,9 @@ class ArtifactPlan:
     turn_observations: Path
     call_review: Path
     cost_entry: Path
+    recording_reference: Path
+    readiness: Path
+    retrieval_notes: Path
 
     def relative_paths(self) -> dict[str, str]:
         """Return safe paths relative to the candidate directory."""
@@ -36,6 +39,9 @@ class ArtifactPlan:
             "turn_observations": self.turn_observations.name,
             "call_review": self.call_review.name,
             "cost_entry": self.cost_entry.name,
+            "recording_reference": self.recording_reference.name,
+            "readiness": self.readiness.name,
+            "retrieval_notes": self.retrieval_notes.name,
         }
 
 
@@ -82,6 +88,9 @@ def plan_candidate_artifacts(call_id: str) -> ArtifactPlan:
         turn_observations=candidate_dir / "turn-observations.md",
         call_review=candidate_dir / "call-review.md",
         cost_entry=candidate_dir / "cost-entry.json",
+        recording_reference=candidate_dir / "recording-reference.json",
+        readiness=candidate_dir / "evidence-readiness.json",
+        retrieval_notes=candidate_dir / "provider-retrieval.md",
     )
 
 

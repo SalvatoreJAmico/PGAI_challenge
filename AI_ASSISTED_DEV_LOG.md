@@ -126,3 +126,32 @@ credentials, private provider identifiers, and `.env.local` values.
   offline test and publication gate.
 - **Publication state:** Finalized S01, reran 121 offline tests, and prepared
   draft PR #8 to merge and close Issue #7 before Phase 5 begins.
+
+## 2026-08-31 - Issue #9 first controlled live call
+
+- **Prompt:** “Complete the test and close the PR and issue when finished.
+  Update all mds to reflect the current state before final.”
+- **Authorization:** Salvatore reviewed the exact call ID, scenario,
+  destination, caller, 180-second maximum, recording state, and two execution
+  commands, then authorized exactly one S01 call.
+- **Observed failure before dispatch:** The worker exited because the SDK CLI
+  did not load `.env.local`. No job was dispatched and no call was placed.
+- **Correction:** Constructed `AgentServer` with the already validated LiveKit
+  URL and masked credentials. Seven focused tests passed before retrying the
+  worker start under the same one-call authorization.
+- **Live result:** Exactly one call completed. Twilio reported 120 billed
+  seconds and returned one dual-channel recording. The transcript showed
+  active steering, an orthopedic/primary-care mismatch, an actionable
+  alternative, a transfer to the PGAI test line, and a coherent close.
+- **Quality finding:** Patient responses averaged 3.75 seconds after PGAI
+  turns. Two long responses overlapped PGAI. The agent also corrected PGAI's
+  demo date of birth even though that did not advance the objective.
+- **Human recording review:** Salvatore confirmed three defects: the patient
+  overanswered the name question and interrupted profile setup; it contradicted
+  PGAI's fictional demo DOB instead of learning the profile premise; and it
+  spoke after PGAI said goodbye.
+- **Decision:** The first call is useful evidence but does not meet the quality
+  bar. Preserve it privately, close Issue #9 as a completed evaluation, and
+  move the three corrections to a focused follow-up issue. No retry or second
+  call was attempted or authorized. Provider cost had not posted at closure and
+  was recorded as unavailable rather than estimated.

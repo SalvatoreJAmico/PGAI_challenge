@@ -149,7 +149,10 @@ Use this section as a chronological record. Notes should capture what was observ
 - **Primary selected:** LiveKit Agents + Twilio SIP + OpenAI `gpt-realtime-2.1`.
 - **Backup selected:** Twilio bidirectional Media Streams + OpenAI `gpt-realtime-2.1`.
 - **Reasoning:** The bot must clear the coherent-conversation gate, but the project should concentrate engineering time on testing quality, useful bug discovery, evidence, and genuine debugging. LiveKit provides established voice infrastructure while leaving our scenario and evaluation logic in Python.
-- **Current state:** Architecture selected; the non-call safety foundation and provider-ready conversation runtime are implemented and verified. LiveKit/OpenAI composition and the approved inert SIP request plan exist behind explicit boundaries. Starting the worker or room, creating the SIP participant and Realtime session, and making the first controlled call remain Phase 5 work.
+- **Current state:** The primary architecture completed one authorized live
+  call and produced a dual-channel recording, transcript, metadata, and review.
+  The transport path is operational. Three conversation-policy defects require
+  a focused correction before any separately authorized retry.
 
 ### 2026-08-17 — Shared call-ID convention selected
 
@@ -235,6 +238,29 @@ Use this section as a chronological record. Notes should capture what was observ
 - **Verification:** 121 offline tests passed along with the dry run, compilation, dependency, whitespace, ignore, and targeted tracked-file credential checks.
 - **Architecture impact:** Primary architecture is ready for one separately authorized Phase 5 live test.
 - **Loom talking point:** Show the explicit boundary between inert, fully tested call planning and the single future line that creates a LiveKit SIP participant.
+
+### 2026-08-31 - First authorized provider-connected call
+
+- **Context:** Issue #9 authorized exactly one S01 call after the fixed
+  destination, caller, trunk, 180-second limit, and dual recording were
+  reviewed.
+- **Observed behavior:** The first worker start failed before dispatch because
+  the SDK CLI did not automatically read `.env.local`. Passing validated
+  LiveKit settings into `AgentServer` fixed registration without changing the
+  call boundary. The single dispatched call then completed normally.
+- **Evidence:** Twilio reported 120 billed seconds and produced a 119.20-second
+  dual-channel MP3. The post-call transcript contains the orthopedic office,
+  fictional patient, and transferred PGAI test-line turns. Mean patient-agent
+  response latency was 3.75 seconds. Two overlaps occurred during longer
+  patient responses.
+- **Result:** The office could not schedule primary care but recommended
+  contacting a primary-care office and offered a transfer. This satisfies the
+  scenario's acceptable-alternative outcome. No retry or second call occurred.
+- **Architecture impact:** The primary LiveKit + Twilio SIP + OpenAI Realtime
+  path is operational. Shorter patient turns are the first quality-tuning
+  candidate; no architecture switch is justified.
+- **Loom talking point:** Show the pre-dispatch worker configuration failure,
+  the narrow fix, the one-call evidence chain, and the observed overlap.
 
 ### Note template
 

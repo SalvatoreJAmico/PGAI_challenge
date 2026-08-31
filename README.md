@@ -7,12 +7,13 @@ Automated voice bot for running realistic patient conversations against the Pret
 The local non-call safety foundation is complete. It includes typed
 configuration, an immutable normalized destination gate, fictional scenario
 validation, UTC call IDs, safe artifact planning, and a provider-free dry run.
-Phase 4B is complete. The provider-ready conversation runtime, inert outbound
-request plan, minimum evidence schemas, finalized S01 fixture, and provider-free
-rehearsal are implemented and verified. Phase 5 begins with one separately
-authorized controlled live call.
-No LiveKit room, SIP participant, OpenAI Realtime session, or telephone call
-has been created by the implementation.
+Phase 4B is complete. Phase 5 has executed exactly one separately authorized
+S01 call through LiveKit, Twilio SIP, and OpenAI Realtime. The private candidate
+evidence contains a dual-channel recording, speaker-labelled transcript,
+metadata, latency observations, and a human-reviewed technical assessment.
+The first call exposed three focused conversational defects that must be fixed
+before a separately authorized retry. Provider cost had not posted when the
+review was closed and is recorded as unavailable rather than estimated.
 
 ## Local setup
 
@@ -24,8 +25,7 @@ py -3.12 -m venv .venv
 ```
 
 Copy `.env.example` to the ignored `.env.local` file and provide the required
-private settings. Never commit `.env.local`. Previously exposed credentials
-must be rotated before authenticated or provider-connected testing.
+private settings. Never commit `.env.local` or print its values.
 
 Run the focused offline test suite:
 

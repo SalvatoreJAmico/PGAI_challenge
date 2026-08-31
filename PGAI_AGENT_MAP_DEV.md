@@ -4,7 +4,7 @@
 
 **Created:** 2026-08-17
 
-**Evidence status:** Not yet verified by an assessment call
+**Evidence status:** Baseline preserved; first observed comparison added below
 
 This document preserves the expected behavior of the PGAI voice agent before telephone testing. It is based only on the challenge instructions, the fictional-patient Athena demo flow, and project-relevant statements on Pretty Good AI's public website. Company descriptions are treated as predictions, not observed system behavior. After the first controlled call, record the observed map separately instead of rewriting this baseline.
 
@@ -127,3 +127,29 @@ This document preserves the expected behavior of the PGAI voice agent before tel
 ## Later comparison rule
 
 Do not revise the predictions above after assessment calls begin. Create a separate observed map that cites exact call IDs, transcript turns, and recording timestamps. Differences between this baseline and observed behavior are iteration evidence, not errors to erase.
+
+## Observed S01 map
+
+**Call:** `S01-A01-20260831T195646Z`
+
+1. PGAI announced recording and language selection.
+2. PGAI identified Pivot Point Orthopedics and asked whether to create a demo
+   profile.
+3. PGAI requested only the patient's first and last name.
+4. The fictional-patient agent answered the name but prematurely added the
+   appointment request, overlapping PGAI's profile setup response.
+5. PGAI created the profile from the name and assigned July 4, 2000 as the demo
+   date of birth.
+6. The patient agent unnecessarily contradicted that fictional demo premise,
+   then repeated the primary-care request.
+7. PGAI recognized that orthopedics could not schedule general primary care,
+   recommended contacting a primary-care office, and offered a transfer.
+8. The patient accepted; the transfer reached the Pretty Good AI test line.
+9. The test line said goodbye, but the patient agent spoke once more instead of
+   treating goodbye as terminal.
+
+**Observed outcome:** Acceptable alternative. PGAI did not schedule an
+appointment, but it supplied an actionable next step and transfer. Before a
+retry, the patient agent must use this loop: listen, answer only the current
+question, listen again, adopt provider-established fictional demo facts, and
+stop immediately after a clear goodbye.

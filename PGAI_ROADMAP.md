@@ -1,6 +1,6 @@
 # Pretty Good AI Engineering Challenge — Live Roadmap
 
-**Status:** Phase 4B and Issue #7 are complete; Phase 5 one-call integration is next; no provider session or telephone call has been created
+**Status:** Phase 5 first-call evaluation is complete; one authorized S01 call exposed three documented conversation defects requiring a focused fix before any retry
 **Working pace:** AI implements one small offline section at a time, explains and shows the code, runs focused tests, and waits for Salvatore's review and permission before continuing
 **Expected duration:** Four working days, with a fifth contingency day if integration or call quality requires it  
 **Assessment destination:** `+18054398008` only  
@@ -16,7 +16,7 @@
 - **Cost posture:** Track all usage and preserve receipts, but do not sacrifice the strongest overall architecture merely to remain under the $20 reimbursement amount.
 - **Implementation scope:** Optimize for satisfying the challenge rather than production-grade threat coverage. Keep controls that directly constrain agent behavior, the approved destination, the 180-second call limit, fictional-patient use, confirmation accuracy, silence or loop handling, and evidence quality. Do not add speculative defenses for outside attackers or locally reviewed scenario files unless an observed problem requires them.
 - **Credential posture for this project:** Continue using the existing ignored local credentials under the user's accepted-risk decision. Rotate only if a credential enters Git, logs, tracked documentation, test output, or another unintended location. This exception applies only to this challenge project.
-- **MVP runtime state:** Conversation decisions, fictional-patient instructions, offline LiveKit/OpenAI composition, an approved inert call-request plan, minimum evidence records, and a provider-free S01 rehearsal are implemented. The first provider connection and telephone call remain Phase 5 work.
+- **MVP runtime state:** The worker, fixed one-shot dispatch, LiveKit/OpenAI session, Twilio SIP call, dual-channel recording, transcript, metadata, latency observations, and private review evidence are implemented for the first authorized S01 call.
 
 ## Non-negotiable safety gates
 
@@ -27,7 +27,7 @@
 - [X] Select exactly one outbound number and record it accurately in E.164 format.
 - [X] Use that same outbound number for every test call, including mapping and retest calls.
 - [X] Do not make a manual call from a personal phone.
-- [ ] Do not make any call until the approved outbound number, two-sided recording, transcript capture, and metadata capture are configured.
+- [X] Do not make any call until the approved outbound number, two-sided recording, transcript capture, and metadata capture are configured.
 - [ ] Do not make bulk calls until one complete early call has been heard, inspected, and approved.
 - [X] Do not commit API keys, phone credentials, tokens, secrets, `.env`, or sensitive recordings.
 - [X] Commit a safe `.env.example` containing the agreed provider and safety variable names with no values or secrets; extend it only when the configuration contract changes.
@@ -156,23 +156,23 @@ Salvatore writes each Python section in a small, reviewable piece with AI code c
 
 ## Phase 5 — First controlled end-to-end call
 
-- [ ] Confirm the destination is exactly `+18054398008`.
-- [ ] Confirm the configured caller is the single approved outbound E.164 number.
-- [ ] Confirm two-sided recording is enabled.
-- [ ] Confirm two-sided transcript capture is enabled.
-- [ ] Confirm scenario, intended outcome, timestamps, metadata, and cost capture are enabled.
-- [ ] Make only one controlled call.
-- [ ] Hold a complete conversation, normally 1–3 minutes—not one question and hang-up.
-- [ ] Confirm the bot actively steers toward the intended outcome.
-- [ ] Save MP3 or OGG audio containing both sides.
-- [ ] Save a transcript containing both sides with speaker labels.
-- [ ] Save scenario definition, intended outcome, metadata, and review notes.
-- [ ] Listen to the entire recording.
-- [ ] Read the entire transcript against the audio.
-- [ ] Measure response latency, pauses, interruptions, glitches, and coherence.
+- [X] Confirm the destination is exactly `+18054398008`.
+- [X] Confirm the configured caller is the single approved outbound E.164 number.
+- [X] Confirm two-sided recording is enabled.
+- [X] Confirm two-sided transcript capture is enabled.
+- [X] Confirm scenario, intended outcome, timestamps, metadata, and cost capture are enabled.
+- [X] Make only one controlled call.
+- [X] Hold a complete conversation, normally 1–3 minutes—not one question and hang-up.
+- [X] Confirm the bot actively steers toward the intended outcome.
+- [X] Save MP3 or OGG audio containing both sides.
+- [X] Save a transcript containing both sides with speaker labels.
+- [X] Save scenario definition, intended outcome, metadata, and review notes.
+- [X] Listen to the entire recording.
+- [X] Read the entire transcript against the audio.
+- [X] Measure response latency, pauses, interruptions, glitches, and coherence.
 - [ ] Verify the actual call cost in the ledger.
-- [ ] Decide whether the first call meets the quality bar.
-- [ ] Do not begin bulk calls if it does not.
+- [X] Decide whether the first call meets the quality bar.
+- [X] Do not begin bulk calls if it does not.
 
 ## Phase 6 — Preserve and record genuine AI-assisted debugging
 
@@ -424,12 +424,12 @@ Every bug entry must include:
 
 - [ ] Phases 0–3: workspace, official documentation, architecture, map, and safe configuration.
 - [x] Phase 4: smallest provider-ready bot, written and reviewed in small Python pieces without dialing.
-- [ ] Phase 5: one controlled call only.
-- [ ] Listen, inspect, and decide whether it meets the quality bar.
+- [x] Phase 5: one controlled call only.
+- [x] Listen, inspect, and decide whether it meets the quality bar.
 
 ### Day 2 — Finish core code and demonstrate iteration
 
-- [ ] Preserve a real early failure.
+- [x] Preserve a real early failure.
 - [ ] Record Loom Video 2 during genuine AI-assisted diagnosis and repair.
 - [ ] Improve latency, pacing, turn-taking, steering, and audio quality.
 - [ ] Approve an improved controlled call before bulk scenarios.
@@ -466,7 +466,7 @@ Every bug entry must include:
 - [x] Single outbound number configured.
 - [x] Configuration, immutable destination gate, fictional scenario schema, call IDs, artifact planning, and provider-free dry run complete.
 - [x] Issues #5 and #7 completed for the non-call safety foundation and provider-ready conversation runtime without dialing.
-- [ ] First complete call approved.
+- [x] First complete call reviewed; focused fixes required before approval.
 - [ ] Genuine debugging video recorded.
 - [ ] Minimum 10 strong calls complete.
 - [ ] Documentation and bug report complete.
