@@ -1,6 +1,6 @@
 # Pretty Good AI Engineering Challenge — Live Roadmap
 
-**Status:** Phase 5 first-call evaluation is complete; one authorized S01 call exposed three documented conversation defects requiring a focused fix before any retry
+**Status:** Phase 5 first call and one authorized retry are reviewed; turn discipline improved, A02 remained partial at the duration limit, and the next work is lower-latency response refinement before broader scenarios
 **Working pace:** AI implements one small offline section at a time, explains and shows the code, runs focused tests, and waits for Salvatore's review and permission before continuing
 **Expected duration:** Four working days, with a fifth contingency day if integration or call quality requires it  
 **Assessment destination:** `+18054398008` only  
@@ -173,6 +173,19 @@ Salvatore writes each Python section in a small, reviewable piece with AI code c
 - [ ] Verify the actual call cost in the ledger.
 - [X] Decide whether the first call meets the quality bar.
 - [X] Do not begin bulk calls if it does not.
+
+### S01 retry result
+
+- [X] Preserve the three A01 defects before changing instructions.
+- [X] Require concise current-turn answers, fictional demo-profile adaptation,
+  and terminal goodbye handling.
+- [X] Make exactly one separately authorized A02 retry.
+- [X] Confirm improved one-question turn discipline from the recording.
+- [X] Record the partial result when the duration limit ended the call before
+  PGAI confirmed completion.
+- [X] Preserve the remaining compound-choice, repetition, and response-silence
+  findings before further changes.
+- [X] Stop without making another call.
 
 ## Phase 6 — Preserve and record genuine AI-assisted debugging
 

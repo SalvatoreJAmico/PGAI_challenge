@@ -45,12 +45,21 @@ def test_instructions_reject_unvalidated_mapping() -> None:
 @pytest.mark.parametrize(
     "required_boundary",
     [
-        "Respond naturally and directly to PGAI's latest turn.",
-        "Do not recite a fixed script",
+        "Listen to PGAI's complete turn before responding.",
+        "Answer every explicit question or directly presented choice",
+        "then stop and listen again",
+        "Do not front-load later scenario facts",
+        "answer without repeating those details",
+        "only to correct an error or perform the final material booking confirmation",
+        "Respond promptly without following a fixed response script.",
+        "fictional demo-profile facts established by PGAI",
+        "Never correct or argue with a safe fictional demo-profile premise.",
         "do not invent facts",
         "Do not use or request real-patient information.",
         "Do not give medical advice or provide emergency guidance.",
         "until PGAI explicitly confirms its material details",
+        "clearly says goodbye",
+        "say nothing further",
         "end with a brief, neutral close",
     ],
 )

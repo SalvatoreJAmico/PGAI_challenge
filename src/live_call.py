@@ -1,11 +1,20 @@
 """LiveKit worker for one explicitly dispatched S01 call."""
 
+import asyncio
 import json
+import re
 from datetime import timedelta
 from pathlib import Path
 
 from livekit import api
-from livekit.agents import AgentServer, JobContext, cli, room_io
+from livekit.agents import (
+    AgentServer,
+    AgentSession,
+    JobContext,
+    UserInputTranscribedEvent,
+    cli,
+    room_io,
+)
 
 from src.artifacts import plan_candidate_artifacts
 from src.call_request import CallRequestPlan, build_call_request_plan
@@ -26,6 +35,27 @@ server = AgentServer(
     api_key=_worker_settings.livekit_api_key.get_secret_value(),
     api_secret=_worker_settings.livekit_api_secret.get_secret_value(),
 )
+
+GOODBYE_PATTERN = re.compile(r"\b(?:goodbye|good[ -]bye)\b", re.IGNORECASE)
+
+
+def is_terminal_goodbye(transcript: str) -> bool:
+    """Return whether PGAI clearly ended the conversation."""
+
+    return GOODBYE_PATTERN.search(transcript) is not None
+
+
+def register_goodbye_stop(session: AgentSession) -> None:
+    """Stop output and close the session after a final PGAI goodbye."""
+
+    def on_user_input(event: UserInputTranscribedEvent) -> None:
+        if not event.is_final or not is_terminal_goodbye(event.transcript):
+            return
+
+        session.interrupt(force=True)
+        asyncio.create_task(session.aclose())
+
+    session.on("user_input_transcribed", on_user_input)
 
 
 def build_sip_participant_request(
@@ -68,6 +98,7 @@ async def s01_call_job(ctx: JobContext) -> None:
     artifacts = plan_candidate_artifacts(call_id)
     plan = build_call_request_plan(settings, scenario, artifacts)
     composition = build_agent_composition(settings, scenario)
+    register_goodbye_stop(composition.session)
 
     try:
         await create_sip_participant(ctx, plan)
