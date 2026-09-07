@@ -1,4 +1,4 @@
-"""Explicitly dispatch the one prepared S01 candidate to a running worker."""
+"""Explicitly dispatch the one prepared S02 candidate to a running worker."""
 
 import asyncio
 import json

@@ -9,7 +9,7 @@ from src.evidence_workspace import prepare_evidence_workspace
 from src.preflight import CONFIRMED_RECORDING_STATUS, run_preflight
 
 
-CALL_ID = "S01-A01-20260831T210000Z"
+CALL_ID = "S02-A01-20260831T220000Z"
 
 
 def prepare_workspace(tmp_path, monkeypatch, recording_status: str) -> None:
@@ -41,7 +41,7 @@ def test_preflight_returns_only_non_secret_call_summary(
     summary = run_preflight(CALL_ID)
 
     assert summary.call_id == CALL_ID
-    assert summary.scenario_id == "S01"
+    assert summary.scenario_id == "S02"
     assert summary.destination == APPROVED_DESTINATION
     assert summary.max_call_seconds == 180
     assert summary.sip_trunk_configured is True

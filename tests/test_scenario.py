@@ -12,6 +12,11 @@ FIXTURE_PATH = (
     / "scenarios"
     / "S01-appointment-scheduling.json"
 )
+S02_FIXTURE_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "scenarios"
+    / "S02-appointment-rescheduling.json"
+)
 
 
 def valid_scenario_values() -> dict[str, object]:
@@ -37,6 +42,17 @@ def test_minimal_fictional_fixture_loads() -> None:
     assert scenario.patient.fictional is True
     assert scenario.steering_points
     assert scenario.safe_stopping_conditions
+
+
+def test_s02_rescheduling_fixture_is_complete_and_fictional() -> None:
+    scenario = load_scenario(S02_FIXTURE_PATH)
+
+    assert scenario.scenario_id == "S02"
+    assert scenario.patient.fictional is True
+    assert "reschedule" in scenario.objective.lower()
+    assert "Wednesday, September 2" in " ".join(scenario.steering_points)
+    assert "original appointment" in " ".join(scenario.steering_points)
+    assert "replacement date" in " ".join(scenario.steering_points)
 
 
 def test_patient_must_be_explicitly_fictional() -> None:

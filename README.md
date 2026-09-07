@@ -18,6 +18,11 @@ confirmed completion. The remaining refinements are complete compound-choice
 answers, less repetition, and lower response silence. No further call is
 authorized. Provider cost was unavailable and was not estimated.
 
+S02 completed one authorized appointment-rescheduling call with a partial
+outcome: PGAI transferred to its test-line ending before confirming a replacement
+appointment. Human review of the recording is pending. Any further call requires
+new explicit authorization; preparing or importing the code does not dial.
+
 ## Local setup
 
 Create the project virtual environment and install the constrained dependencies:

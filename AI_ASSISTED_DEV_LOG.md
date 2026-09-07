@@ -176,3 +176,47 @@ credentials, private provider identifiers, and `.env.local` values.
   confirmed the booking or said goodbye. No further call was authorized or
   attempted. Instructions were refined behaviorally, without scripting exact
   responses, and the next work moves to a separate focused issue.
+
+### Salvatore's verbatim call-review prompts
+
+The following prompts are preserved exactly as written because they directly
+drove the conversation-policy changes:
+
+1. “the first problem is that the PGAI agent was trying to setup the profile an our agent interuped.”
+2. “answer one questio at a time”
+3. “italso looks like just the name was enouph to create the profile and our agent was trying to correct the dob insted of learning the prophile prems”
+4. “so listen -> answre only what was asked -> listen and adapt the known demo profile -> answer”
+5. “ok when the PGAI says Good by itis over stop talking”
+6. “multipul questions are answerd with one answer. When PGAI gives both the doctors names a coice could have been made. The GPT only chose the morning when it could have chose the doctor too.”
+7. “the GPT gives repeted information one incedent is the GPT was asked if it would like to book for rutine care, and answerd "Yes, It is a general office visit for rutine care,"”
+8. “Yes, but dont prompt the gpt to say that exaclty.”
+9. “there is too much silence.”
+
+## 2026-08-31 - Issue #13 S02 rescheduling call
+
+- **Preparation:** Added the fictional S02 appointment-rescheduling scenario,
+  fixed the runtime and preflight to call ID `S02-A01-20260831T222747Z`, and
+  prepared an ignored evidence workspace. The full offline suite passed 142
+  tests before the live call.
+- **Scenario objective:** Ask PGAI to move Jamie Rivera's existing fictional
+  routine appointment with Dr. Kelly Noble from Tuesday, September 1 at
+  10:00 a.m. to Wednesday, September 2 in the morning.
+- **Authorization:** After confirming that all secrets were present, Salvatore
+  explicitly authorized one call with the prompt: “yes make the call”.
+  Exactly one S02 dispatch was made; no retry was attempted.
+- **Observed conversation:** The patient stated the rescheduling request,
+  supplied the fictional DOB, spelled the requested name, and answered PGAI's
+  compound record-lookup question. PGAI then transferred the call to its test
+  line instead of locating or rescheduling the appointment.
+- **Terminal behavior:** PGAI ended with “Goodbye.” The deterministic terminal
+  handler closed the session, and the patient did not speak after the goodbye.
+- **Live result:** Twilio reported one completed 129-second call and one
+  completed dual-channel recording. The recording and provider references are
+  stored only in the ignored S02 candidate workspace.
+- **Outcome:** `partial`. The requested appointment was not rescheduled or
+  confirmed because PGAI transferred to the test-line ending during profile
+  lookup.
+- **Pause state:** The private recording was opened for human review. Salvatore
+  paused the session before reporting audio findings. Resume by reviewing that
+  recording and recording one observed problem at a time; do not place another
+  call without new explicit authorization.

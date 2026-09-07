@@ -32,5 +32,23 @@ def test_prepare_workspace_creates_incomplete_private_templates(
     assert recording["twilio_recording_sid"] is None
     assert metadata["duration_seconds"] is None
     assert metadata["provider_call_id"] is None
+    assert metadata["scenario_id"] == "S01"
     assert cost["amount_usd"] is None
     assert not artifacts.two_sided_audio.exists()
+
+
+def test_workspace_derives_s02_metadata_from_call_id(
+    tmp_path,
+    monkeypatch,
+) -> None:
+    monkeypatch.setattr(
+        artifacts_module,
+        "CANDIDATES_ROOT",
+        tmp_path / ".local" / "candidates",
+    )
+    artifacts = plan_candidate_artifacts("S02-A01-20260831T220000Z")
+
+    prepare_evidence_workspace(artifacts)
+
+    metadata = json.loads(artifacts.metadata.read_text(encoding="utf-8"))
+    assert metadata["scenario_id"] == "S02"

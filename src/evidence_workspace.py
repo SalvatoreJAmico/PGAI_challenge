@@ -11,6 +11,8 @@ def prepare_evidence_workspace(artifacts: ArtifactPlan) -> None:
 
     artifacts.candidate_dir.mkdir(parents=True, exist_ok=False)
 
+    scenario_id = artifacts.call_id.split("-", maxsplit=1)[0]
+
     _write_json(
         artifacts.readiness,
         {
@@ -34,7 +36,7 @@ def prepare_evidence_workspace(artifacts: ArtifactPlan) -> None:
         artifacts.metadata,
         {
             "call_id": artifacts.call_id,
-            "scenario_id": "S01",
+            "scenario_id": scenario_id,
             "started_at": None,
             "duration_seconds": None,
             "outcome": None,

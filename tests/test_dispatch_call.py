@@ -9,13 +9,13 @@ from src.preflight import PreflightSummary
 
 def summary() -> PreflightSummary:
     return PreflightSummary(
-        call_id="S01-A01-20260831T195646Z",
-        scenario_id="S01",
+        call_id="S02-A01-20260831T220000Z",
+        scenario_id="S02",
         destination="+18054398008",
         caller_number="+14785550100",
         max_call_seconds=180,
-        room_name="pgai-s01-a01-20260831t195646z",
-        participant_identity="pgai-target-s01-a01-20260831t195646z",
+        room_name="pgai-s02-a01-20260831t220000z",
+        participant_identity="pgai-target-s02-a01-20260831t220000z",
         sip_trunk_configured=True,
         twilio_recording_status="confirmed_dual_from_answer",
     )
@@ -24,10 +24,10 @@ def summary() -> PreflightSummary:
 def test_dispatch_request_contains_only_agent_room_and_call_id() -> None:
     request = build_dispatch_request(summary())
 
-    assert request.agent_name == "pgai-s01"
-    assert request.room == "pgai-s01-a01-20260831t195646z"
+    assert request.agent_name == "pgai-s02"
+    assert request.room == "pgai-s02-a01-20260831t220000z"
     assert json.loads(request.metadata) == {
-        "call_id": "S01-A01-20260831T195646Z"
+        "call_id": "S02-A01-20260831T220000Z"
     }
     assert "+18054398008" not in request.metadata
     assert "+14785550100" not in request.metadata

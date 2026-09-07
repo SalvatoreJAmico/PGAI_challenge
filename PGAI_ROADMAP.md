@@ -1,6 +1,6 @@
 # Pretty Good AI Engineering Challenge — Live Roadmap
 
-**Status:** Phase 5 first call and one authorized retry are reviewed; turn discipline improved, A02 remained partial at the duration limit, and the next work is lower-latency response refinement before broader scenarios
+**Status:** Phase 5 includes the reviewed S01 call and retry plus one completed S02 call with a partial outcome; resume with human review of the S02 recording before any further call
 **Working pace:** AI implements one small offline section at a time, explains and shows the code, runs focused tests, and waits for Salvatore's review and permission before continuing
 **Expected duration:** Four working days, with a fifth contingency day if integration or call quality requires it  
 **Assessment destination:** `+18054398008` only  
@@ -187,6 +187,27 @@ Salvatore writes each Python section in a small, reviewable piece with AI code c
   findings before further changes.
 - [X] Stop without making another call.
 
+### S02 preparation
+
+- [X] Define one fictional appointment-rescheduling scenario with an explicit
+  fallback if PGAI cannot find the possibly unconfirmed S01 appointment.
+- [X] Carry forward complete current-turn answers, concise confirmations,
+  fictional demo-profile adaptation, prompt responses, and terminal goodbye.
+- [X] Add focused S02 scenario and evidence tests.
+- [X] Prepare one ignored S02 candidate workspace.
+- [X] Complete final preflight review and receive separate authorization before
+  the first S02 call.
+- [X] Dispatch exactly one authorized S02 call and make no automatic retry.
+- [X] Download the completed dual-channel recording and retain provider
+  references in the ignored S02 candidate workspace.
+- [X] Record the 129-second call as `partial`: PGAI transferred to its test-line
+  ending during profile lookup without rescheduling or confirming the
+  appointment.
+- [X] Confirm the patient stopped speaking when PGAI said goodbye.
+- [ ] Complete Salvatore's human review of the S02 recording one observed
+  problem at a time.
+- [ ] Decide whether S02 requires a correction and separately authorized retry.
+
 ## Phase 6 — Preserve and record genuine AI-assisted debugging
 
 - [ ] Identify a real early problem from audio, transcript, timing, steering, or artifact generation.
@@ -369,6 +390,25 @@ Every bug entry must include:
 
 ### Work log
 
+#### Time summary through session 8
+
+| Session | Date | Active time |
+| --- | --- | ---: |
+| 1 | 2026-08-17 | ~2 hours 15 minutes |
+| 2 | 2026-08-18 | ~1 hour 18 minutes |
+| 3 | 2026-08-19 | ~1 hour 21 minutes |
+| 4 | 2026-08-21 | ~30 minutes |
+| 5 | 2026-08-21 | ~35 minutes |
+| 6 | 2026-08-21 | ~1 hour 20 minutes |
+| 7 | 2026-08-31 | ~4 hours, best-effort estimate |
+| 8 | 2026-08-31 | ~3 hours, best-effort estimate |
+
+- **Estimated cumulative active time:** approximately 14 hours 20 minutes.
+- **Timing confidence:** Sessions 1-3 use contemporaneous session records;
+  Sessions 4-6 have approximately 30 minutes of combined uncertainty;
+  Sessions 7-8 are reconstructed from the work sequence and provider
+  timestamps and may vary by approximately 1 hour in total.
+
 #### 2026-08-17 — Work session 1
 
 - **Active time:** approximately 2.25 hours.
@@ -423,6 +463,12 @@ Every bug entry must include:
 
 #### 2026-08-31 - Work session 7
 
+- **Active time:** approximately 4 hours of guided runtime implementation,
+  incremental explanation and review, offline verification, scenario design,
+  provider composition, rehearsal, and publication preparation.
+- **Elapsed session window:** not recoverable precisely from the available
+  records. The active-time value is a best-effort estimate and may vary by
+  approximately 45 minutes.
 - **Scope decision:** Reduced the runtime to the challenge MVP and retained only assignment-relevant destination, duration, fictional-patient, confirmation, silence, loop, and evidence behavior.
 - **Conversation runtime:** Completed and reviewed states, transitions, outcome decisions, early closing, silence recovery, repeated-loop handling, and dynamic fictional-patient instructions.
 - **Provider boundary:** Verified the installed LiveKit/OpenAI APIs against official documentation and added explicit in-memory composition without starting a worker, room, or Realtime session.
@@ -432,6 +478,44 @@ Every bug entry must include:
 - **Publication:** Published the provider-ready runtime and S01 fixture in draft PR #8. Issue #7 has every implementation and verification requirement complete.
 - **Safety state:** No LiveKit worker or room, SIP participant, OpenAI Realtime session, provider recording, or telephone call was created.
 - **Next starting point:** Begin a separate Phase 5 issue for exactly one authorized S01 live call followed by immediate recording, transcript, latency, and outcome review.
+
+#### 2026-08-31 - Work session 8
+
+- **Active time:** approximately 3 hours of guided live-call execution,
+  recording review, conversation-policy correction, focused testing, and S02
+  preparation.
+- **Elapsed session window:** approximately 3 hours, from the first S01 live
+  call work through the end of the S02 evidence capture and documentation.
+  This is a best-effort estimate based on the provider call timestamps and
+  recorded work sequence.
+- **Session shape:** Continued in several guided periods covering the first
+  live-call evaluation, focused instruction corrections, one S01 retry, and
+  preparation and execution of the first S02 call.
+- **S01 A01 review:** Preserved three human-reviewed defects: overanswering and
+  interrupting profile setup, correcting PGAI's safe fictional demo DOB instead
+  of adapting to it, and speaking after PGAI said goodbye.
+- **S01 A02 correction and retry:** Added complete-turn listening, concise
+  current-turn responses, demo-profile adaptation, and deterministic goodbye
+  termination. The authorized retry improved turn discipline but remained
+  partial at the 180-second limit. Preserved incomplete compound-choice
+  answers, repeated known information, and excess response silence as the
+  remaining findings.
+- **S02 preparation:** Added the fictional appointment-rescheduling scenario,
+  fixed call ID `S02-A01-20260831T222747Z`, focused tests, preflight, and an
+  ignored candidate evidence workspace. The complete offline suite passed 142
+  tests before authorization.
+- **S02 live result:** Salvatore authorized exactly one call. Twilio reported a
+  completed 129-second call and one completed dual-channel recording. PGAI
+  gathered profile details and transferred to its test-line ending before the
+  appointment was rescheduled, so the outcome is `partial`.
+- **Terminal behavior:** The patient stopped when PGAI said goodbye; no second
+  dispatch or retry occurred.
+- **Evidence state:** The audio and provider references remain in the ignored
+  S02 candidate workspace. The private recording was opened, but human audio
+  review was paused before findings were reported.
+- **Next starting point:** Reopen and review the S02 recording, record one
+  observed problem at a time, then decide whether a code correction and a new
+  separately authorized call are warranted.
 
 ### Day 1 — Architecture and first complete call
 

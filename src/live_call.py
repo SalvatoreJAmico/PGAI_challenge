@@ -1,4 +1,4 @@
-"""LiveKit worker for one explicitly dispatched S01 call."""
+"""LiveKit worker for one explicitly dispatched S02 call."""
 
 import asyncio
 import json
@@ -25,9 +25,9 @@ from src.scenario import load_scenario
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCENARIO_PATH = (
-    PROJECT_ROOT / "scenarios" / "S01-appointment-scheduling.json"
+    PROJECT_ROOT / "scenarios" / "S02-appointment-rescheduling.json"
 )
-AGENT_NAME = "pgai-s01"
+AGENT_NAME = "pgai-s02"
 
 _worker_settings = load_settings()
 server = AgentServer(
@@ -85,8 +85,8 @@ async def create_sip_participant(
 
 
 @server.rtc_session(agent_name=AGENT_NAME)
-async def s01_call_job(ctx: JobContext) -> None:
-    """Run one dispatched S01 call using a preflight-generated call ID."""
+async def s02_call_job(ctx: JobContext) -> None:
+    """Run one dispatched S02 call using a preflight-generated call ID."""
 
     metadata = json.loads(ctx.job.metadata)
     call_id = metadata.get("call_id")
