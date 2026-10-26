@@ -42,3 +42,6 @@ temp/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Preserved migration backup (includes private local files)
+/migration-backup/
